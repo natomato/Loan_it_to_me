@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20130902051943) do
     t.integer  "item_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "photo_id"
+    t.string   "file_loc"
   end
 
   add_index "item_photos", ["item_id"], :name => "index_item_photos_on_item_id"
