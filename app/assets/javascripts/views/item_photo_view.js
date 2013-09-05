@@ -1,7 +1,7 @@
-LoanItToMe.Views.ItemPhoto = Backbone.View.extend({
+LoanItToMe.Views.ItemPhoto = Support.CompositeView.extend({
   
   id: "li",
-
+  className: "photo",
   template: JST['items/photo'],
 
   render: function(){

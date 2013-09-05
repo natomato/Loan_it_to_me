@@ -2,8 +2,6 @@ LoanItToMe.Views.ItemsList = Support.CompositeView.extend({
 
   tagName: "ul",
   className: "list",
-  //nothing to put in the template
-  //template: JST['items/list'],
 
   render: function(){
     var _this = this;
@@ -12,5 +10,4 @@ LoanItToMe.Views.ItemsList = Support.CompositeView.extend({
       _this.$el.append(itemDetail.render().$el);
     });
   }
-
 })

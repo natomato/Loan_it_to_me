@@ -1,7 +1,7 @@
 LoanItToMe.Views.ItemDetail = Support.CompositeView.extend({
   
   id: "li",
-
+  className: "detail",
   template: JST['items/detail'],
 
   render: function(){

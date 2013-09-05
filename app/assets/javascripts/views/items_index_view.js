@@ -9,9 +9,9 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   template: JST['items/index'],
 
   events: {
-    "click .list" : "renderList",
-    "click .photo" : "renderPhotos",
-    "click .map" : "renderMap"
+    "click button.list" : "renderList",
+    "click button.photo" : "renderPhotos",
+    "click button.map" : "renderMap"
   },
 
   initialize: function(){
@@ -24,14 +24,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     this.renderLayout();
     this.renderViewOptions();    
     //? Every view gets its own copy of the collection
-    // var view = new LoanItToMe.Views[this.currentView]({ 
-    //   collection: this.collection
-    // });
-    //this.renderChildInto(view, this.$('.results'));
-    //this[this.currentView]();
-    //this.$('.results').append(this.currentView.render());
     this.swap(this.currentView);
-    debugger
 
     return this;
   },
@@ -41,8 +34,9 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   },
 
   renderList: function(){
+    console.log("list view requested");
 
-    var view = new LoanItToMe.Views.ItemsList({ collection: this.collection});
+    var view = new LoanItToMe.Views.ItemsList({ collection: this.collection });
 
     //this.renderChildInto(view, this.$('.results'));
     this.swap(view);
@@ -50,16 +44,16 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
 
   renderMap: function(){
     console.log("get a map");
+    // e.preventDefault;
+    var view = new LoanItToMe.Views.ItemsMap({ collection: this.collection })
+    this.swap(view);
   },
 
   renderPhotos: function() {
+    console.log("photo view requested");
     // e.preventDefault;
-    //photo view is .hidden by default
-    $results = this.$('.results');
-    this.collection.each(function(item){
-      var itemPhoto = new LoanItToMe.Views.ItemPhoto({ model: item });
-      $results.append(itemPhoto.render().$el);
-    });
+    var view = new LoanItToMe.Views.ItemsPhotos({ collection: this.collection })
+    this.swap(view);
   },
 
   renderViewOptions: function(){

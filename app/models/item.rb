@@ -19,6 +19,8 @@ class Item < ActiveRecord::Base
   end
 
   def history
-    #self.rentals.approved.select
+    # need to order the results start_date DESC
+    self.rentals.select { |rental| rental.status = "approved" }
+
   end
 end
