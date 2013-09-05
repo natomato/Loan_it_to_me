@@ -1,6 +1,16 @@
 LoanItToMe::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  # Paperclip Config settings
+  # config.paperclip_defaults = {
+  #   :storage => :s3,
+  #   :s3_credentials => {
+  #     :bucket => YOUR_BUCKET_NAME,
+  #     :access_key_id => YOUR_ACCESS_KEY_ID,
+  #     :secret_access_key => YOUR_SECRET_ACCESS_KEY
+  #   }
+  # }
+
   # Code is not reloaded between requests
   config.cache_classes = true
 
@@ -19,6 +29,7 @@ LoanItToMe::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
+
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH

@@ -1,21 +1,23 @@
 LoanItToMe.Views.CategoryIndex = Backbone.View.extend({
 
-  template: JST['categories/index'],
+  el: ".container",
 
   events: {
-    //"click .content" : "redirectItemIndex"
+    "mouseover .category-item": "highlight",
+    "mouseout  .category-item": "unhighlight"
   },
 
-  redirectItemIndex: function(event) {
-    //change to the itemIndexView and swap routers.. maybe?
-    //console.log("you clicked" + event.target );
+  highlight: function(event) {
+    $(event.currentTarget).addClass('highlight');
+  },
+
+  unhighlight: function(event) {
+    $(event.currentTarget).removeClass('highlight');
   },
 
   render: function(){
-    var renderedContent = this.template({ categories: this.collection});
-    this.$el.html(renderedContent);
-    debugger
-    return this;
+    //TODO delete
   }
+
 
 });

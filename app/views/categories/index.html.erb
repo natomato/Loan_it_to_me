@@ -1,4 +1,12 @@
-<div class="content"></div>
+<div class="container">
+  <% @categories.each do |category| %>
+  <div class="category-item span4 offset4 text-center" data-category="<%= category.id %>">
+    <a href="#/categories/<%= category.id %>"><%= category.name %></a>
+  </div>
+  <% end %>
+</div>
+
+
 
 <!-- risks html injection attacks -->
 <script type="applicatoin/json" id="categories-data">

@@ -9,4 +9,16 @@ class Item < ActiveRecord::Base
   has_many :rentals
   has_many :reviews, through: :rentals, source: :review
   
+  def pending_requests
+    self.rentals.select { |rental| rental.status = "pending" }
+  end
+
+  def currently_rented?
+    # now = DateTime.now
+    # self.rentals.approved.any? { |rental| rental >}
+  end
+
+  def history
+    #self.rentals.approved.select
+  end
 end

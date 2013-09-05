@@ -14,6 +14,11 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require bootstrap
+//
+// I only need the swapping router and composite view
+//= require backbone-support
+//
 //= require loan_it_to_me
 //= require_tree ../templates
 //= require_tree ./models

@@ -20,7 +20,10 @@ group :development do
 end
 
 gem "backbone-on-rails"
+gem "backbone-support"
 gem "rabl"
 gem "pg"
 gem "bcrypt-ruby"
 gem "ejs"
+gem 'aws-sdk'
+# gem 'paperclip'
