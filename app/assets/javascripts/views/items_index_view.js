@@ -1,11 +1,6 @@
 LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
-  
-  // currentView: new LoanItToMe.Views[this.lastRender]({ 
-  //   collection: this.collection
-  // });
-  
+   
   className: "index",
-  //lastRender: "renderList",
   template: JST['items/index'],
 
   events: {
@@ -23,7 +18,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   render: function(){
     this.renderLayout();
     this.renderViewOptions();    
-    //? Every view gets its own copy of the collection
+    //Every view gets its own copy of the collection this way. Better way?
     this.swap(this.currentView);
 
     return this;

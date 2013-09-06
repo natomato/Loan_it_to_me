@@ -1,9 +1,21 @@
 // Place all the styles related to the Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.fake-photo {
-  display: inline;
-  float: left;
-  height: 10em;
+
+.results {
+  .photo {
+    display: inline-block;
+    float: left;
+    height: 10em;
+    width: 15em;
+  }
+
+ .name {
+  font-size: 1.5em;
+  }
+
+  .description {
+    font-size: 1em;
+  }
 }
 
