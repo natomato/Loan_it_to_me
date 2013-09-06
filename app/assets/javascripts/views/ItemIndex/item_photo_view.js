@@ -1,8 +1,8 @@
-LoanItToMe.Views.ItemDetail = Support.CompositeView.extend({
+LoanItToMe.Views.ItemPhoto = Support.CompositeView.extend({
   
   tagName: "li",
-  className: "detail",
-  template: JST['items/detail'],
+  className: "photos",
+  template: JST['items/photo'],
 
   render: function(){
     var renderedContent = this.template({ item: this.model });

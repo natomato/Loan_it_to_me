@@ -6,16 +6,17 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   events: {
     "click button.list" : "renderList",
     "click button.photo" : "renderPhotos",
-    "click button.map" : "renderMap"
+    "click button.map" : "renderMap",
+    "click .item" : "renderDetail"
   },
 
-  initialize: function(){
+  initialize: function() {
     this.currentView = new LoanItToMe.Views.ItemsList({ 
       collection: this.collection
     });
   },
 
-  render: function(){
+  render: function() {
     this.renderLayout();
     this.renderViewOptions();    
     //Every view gets its own copy of the collection this way. Better way?
@@ -24,11 +25,16 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     return this;
   },
 
-  renderLayout: function(){
+  renderDetail: function(event) {
+    var id = $(event.currentTarget).data("id");
+    Backbone.history.navigate("#/items/" + id, {trigger: true} );
+  },
+
+  renderLayout: function() {
     this.$el.html(this.template());
   },
 
-  renderList: function(){
+  renderList: function() {
     console.log("list view requested");
 
     var view = new LoanItToMe.Views.ItemsList({ collection: this.collection });
@@ -37,7 +43,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     this.swap(view);
   },
 
-  renderMap: function(){
+  renderMap: function() {
     console.log("get a map");
     // e.preventDefault;
     var view = new LoanItToMe.Views.ItemsMap({ collection: this.collection })
@@ -51,7 +57,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     this.swap(view);
   },
 
-  renderViewOptions: function(){
+  renderViewOptions: function() {
     var viewSelect = new LoanItToMe.Views.ViewOptions({ 
       //$el does not work, the attribute is el, the $ is a jquery wrapper
       el: this.$('.view-options'),
@@ -62,7 +68,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     viewSelect.render();
   },
 
-  swap: function(newView){
+  swap: function(newView) {
     this.currentView.leave();
     this.currentView = newView;
     //renderChildInto will call .empty() on the container
