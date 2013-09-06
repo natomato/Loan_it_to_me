@@ -9,6 +9,9 @@ end
 child :photos do
   attributes *Photo.column_names
 end
+child :home do
+  attributes *Home.column_names
+end
 child :owner do
   attributes *User.column_names
 end

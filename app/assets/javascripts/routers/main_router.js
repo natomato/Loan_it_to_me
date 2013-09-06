@@ -2,8 +2,8 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
   
   routes: {
     "" : "categoriesIndex",
-    "categories/:id": "itemsIndex",
-    "items/:id": "itemsDetail"
+    "categories/:id": "itemsIndex"
+    //"items/:id": "itemsDetail"
   },
 
   initialize: function(options) {
@@ -16,10 +16,19 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
   },
 
   itemsDetail: function(id) {
+    //Moved everything to a server side form for simplicity
+    
+    //var item  = new LoanItToMe.Models.Item({ id: id });
+    //var rental = new LoanItToMe.Models.Rental();
+    //var review = new LoanItToMe.Models.Review();
+    //var owner = new LoanItToMe.Models.User();
+    // var photo = new LoanItToMe.Models.Photo();
 
-    var item  = new LoanItToMe.Models.Item({ id: id });
-    item.fetch().done(function() {
-      console.log("item fetched")
+    item.fetch().done(function(data) {
+      console.log("fetched data");
+      var rentals = new LoanItToMe.Collections.Rentals({ model: rental });
+      //var reviews = new LoanItToMe.Collections.Reviews({ model: review });
+      //var owner   = new LoanItToMe.Model.User({ data.owner })
       var detailView = new LoanItToMe.Views.ItemDetailPage({ model: item });
       _this.$rootEl.html(detailView.render().$el);
       debugger
