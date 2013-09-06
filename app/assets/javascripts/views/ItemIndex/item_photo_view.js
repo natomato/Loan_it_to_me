@@ -1,7 +1,7 @@
 LoanItToMe.Views.ItemPhoto = Support.CompositeView.extend({
   
   tagName: "li",
-  className: "photos",
+  className: "photo",
   template: JST['items/photo'],
 
   render: function(){

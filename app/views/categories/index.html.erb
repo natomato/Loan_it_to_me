@@ -5,10 +5,3 @@
   </div>
   <% end %>
 </div>
-
-
-
-<!-- risks html injection attacks -->
-<script type="applicatoin/json" id="categories-data">
-  <%= @categories.to_json.html_safe %>
-</script>

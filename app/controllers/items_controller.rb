@@ -34,7 +34,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    
+
+    # not using the json
     respond_to do |format|
       format.html
       format.json { render [:handlers] => :rabl }

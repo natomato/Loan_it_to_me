@@ -51,7 +51,6 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   },
 
   renderPhotos: function() {
-    console.log("photo view requested");
     // e.preventDefault;
     var view = new LoanItToMe.Views.ItemsPhotos({ collection: this.collection })
     this.swap(view);

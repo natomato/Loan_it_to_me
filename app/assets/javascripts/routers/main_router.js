@@ -16,7 +16,7 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
   },
 
   itemsDetail: function(id) {
-    //Moved everything to a server side form for simplicity
+    //!! Moved everything to a server side form for simplicity
     
     //var item  = new LoanItToMe.Models.Item({ id: id });
     //var rental = new LoanItToMe.Models.Rental();
