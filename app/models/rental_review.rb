@@ -5,4 +5,6 @@ class RentalReview < ActiveRecord::Base
   belongs_to :author, class_name: "User", foreign_key: :author_id
   belongs_to :rental
   has_one :item, through: :rental, source: :item
+
+
 end

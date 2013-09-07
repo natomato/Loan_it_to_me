@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
 
+
     render :new
   end
 
@@ -34,6 +35,9 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @item_photo = [ItemPhoto.new(item_id: @item.id)]
+    p ['item.photo', @item.photos]
+    p ['item_photo', @item_photo]
 
     # not using the json
     respond_to do |format|

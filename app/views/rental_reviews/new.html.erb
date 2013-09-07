@@ -1,2 +1,16 @@
-<h1>RentalReviews#new</h1>
-<p>Find me in app/views/rental_reviews/new.html.erb</p>
+<form action="/rental_reviews" class="new_rental_review" method="post">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+<label for="rental_review_title">Title</label>
+<input id="rental_review_title" name="rental_review[title]" size="20" type="text" value="<%= @review.title %>">
+<br>
+<textarea cols="40" id="review_body" name="rental_review[body]" rows="10" value="<%= @review.body %>"></textarea>
+<br>
+<label for="rating">Rating</label>
+<span class="star" data-id="1">☆</span>
+<span class="star" data-id="2">☆</span>
+<span class="star" data-id="3">☆</span>
+<span class="star" data-id="4">☆</span>
+<span class="star" data-id="5">☆</span>
+<input name="commit" type="submit" value="Review">
+</form>

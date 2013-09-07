@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validate :password, :length => { minimum: 4 }
   validate :username, :email, uniqueness: true
 
-  has_one :home
+  belongs_to :home
   has_many :items, through: :home, source: :items
   has_many :rented_items, through: :home, source: :items
   has_many :rentals, class_name: "Rental", foreign_key: :user_id
@@ -24,6 +24,15 @@ class User < ActiveRecord::Base
   def email=(email)
     #standardize input for uniqueness test
     super(email.downcase.strip)
+  end
+
+
+  def future_requests
+    self.rentals.future.order("start_date DESC").all
+  end
+
+  def history 
+    self.rentals.past.approved.order("end_date DESC").all
   end
 
   #TODO is this necessary?

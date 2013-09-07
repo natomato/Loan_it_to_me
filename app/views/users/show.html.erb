@@ -1,2 +1,33 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="user_show_page">
+
+  <%= render partial: "layouts/user", locals: {user: @user } %>
+
+  <section class="future_requests">
+    <% @user.future_requests.each do |request| %>
+      <li class="request">
+        <div class="name"><%= request.item.name %></div>  
+        <div class="start"><%= request.start_date.strftime('%A, %b %d: %l:%M %p') %></div>  
+        <div class="end"><%= request.end_date.strftime('%A, %b %d: %l:%M %p') %></div>  
+        <div class="status"><%= request.status %></div>
+      </li>
+    <% end %>
+  </section><!-- /.future-requests -->
+  <section class="history">
+    <h1>History</h1>
+    <ul>
+      <% @user.history.each do |request| %>
+        <div class="photo"></div>
+        <li class="requested">
+          <div class="name"><%= request.item.name %></div>
+          <div class="returned"><%= request.end_date.strftime('%A, %b %d') %></div>
+          <% unless request.review %>
+            <%= button_to "Review", rental_request(request), method: :post %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </section><!-- /.history -->
+  <% unless @user.home.nil? %>
+    <%= link_to "Manage Inventory", home_url(@user.home) %>
+  <% end %>
+</div><!-- /.user_show_page -->

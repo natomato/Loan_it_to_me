@@ -1,2 +1,27 @@
-<h1>Homes#show</h1>
-<p>Find me in app/views/homes/show.html.erb</p>
+<div class="inventory">
+  <% @home.items.sort.each do |item| %>
+    <div class="photo small"><%# put main photo here %></div>
+    <div class="item">
+      <%= item.name %>
+      <% item.pending_requests.each do |request| %>
+        <li class="request">
+          <%= request.user.username %>
+          <span class="start"><%= request.start_date.strftime('%A, %b %d: %l:%M %p') %></span>  
+          <span class="end"><%= request.end_date.strftime('%A, %b %d: %l:%M %p') %></span> 
+        </li>
+      <% end %>
+    </div>  
+  <% end %>
+</div>
+<form action="<%= home_url(@home) %>" class="home edit">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="home_street" class="">Street</label>
+  <input type="text" name="home[street]" id="home_street" value="<%= @home.street %>">
+  <label for="home_city" class="">City</label>
+  <input type="text" name="home[city]" id="home_city" value="<%= @home.city %>">
+  <label for="home_state" class="">State</label>
+  <input type="text" name="home[state]" id="home_state" value="<%= @home.state %>">
+  <label for="home_zipcode" class="">Zipcode</label>
+  <input type="text" name="home[zipcode]" id="home_zipcode" value="<%= @home.zipcode %>">
+  <input type="submit" value="update">
+</form>

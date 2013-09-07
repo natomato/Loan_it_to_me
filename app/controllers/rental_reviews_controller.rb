@@ -6,6 +6,7 @@ class RentalReviewsController < ApplicationController
   end
 
   def new
+    @review = RentalReview.new
   end
 
   def edit
@@ -18,5 +19,6 @@ class RentalReviewsController < ApplicationController
   end
 
   def show
+
   end
 end

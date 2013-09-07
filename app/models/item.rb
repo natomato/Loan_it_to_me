@@ -10,7 +10,7 @@ class Item < ActiveRecord::Base
   has_many :reviews, through: :rentals, source: :review
   
   def pending_requests
-    self.rentals.select { |rental| rental.status = "pending" }
+    self.rentals.pending.order("start_date ASC").all
   end
 
   def currently_rented?
@@ -19,8 +19,19 @@ class Item < ActiveRecord::Base
   end
 
   def history
-    # need to order the results start_date DESC
-    self.rentals.select { |rental| rental.status = "approved" }
+    self.rentals.past.approved.order("end_date DESC").all
+  end
+
+  def average_rating
+    item_id = id.to_i
+
+    RentalReview.find_by_sql(<<-SQL)
+      SELECT AVG(rating) rating
+      FROM rental_reviews JOIN rentals
+      ON rental_reviews.rental_id = rentals.id
+      WHERE rentals.item_id = #{item_id}
+    SQL
+    .first.rating.to_f
 
   end
 end

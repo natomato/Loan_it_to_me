@@ -18,5 +18,7 @@ class HomesController < ApplicationController
   end
 
   def show
+    current_user
+    @home = Home.find(params[:id])
   end
 end

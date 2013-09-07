@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902051943) do
+ActiveRecord::Schema.define(:version => 20130907025450) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(:version => 20130902051943) do
 
   create_table "item_photos", :force => true do |t|
     t.integer  "item_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "file_loc"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "filepicker_url"
   end
 
   add_index "item_photos", ["item_id"], :name => "index_item_photos_on_item_id"
@@ -44,14 +44,16 @@ ActiveRecord::Schema.define(:version => 20130902051943) do
     t.integer  "category_id"
     t.string   "name"
     t.text     "description"
-    t.decimal  "price",                                     :default => 0.0
-    t.decimal  "avg_rating",  :precision => 3, :scale => 2
-    t.datetime "created_at",                                                 :null => false
-    t.datetime "updated_at",                                                 :null => false
+    t.decimal  "price",                                       :default => 0.0
+    t.decimal  "avg_rating",    :precision => 3, :scale => 2
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
+    t.integer  "main_photo_id"
   end
 
   add_index "items", ["category_id"], :name => "index_items_on_category_id"
   add_index "items", ["home_id"], :name => "index_items_on_home_id"
+  add_index "items", ["main_photo_id"], :name => "index_items_on_main_photo_id"
 
   create_table "rental_reviews", :force => true do |t|
     t.integer  "author_id"

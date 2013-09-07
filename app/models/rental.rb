@@ -4,9 +4,10 @@ class Rental < ActiveRecord::Base
   validates :status, :inclusion => { :in => %w(pending approved denied) }
   validate :available?
   #scope :per_item, ->(item_id) { where("item_id = ?", item_id) }
-  # scope :pending, -> { where(status: 'pending') }
-  # scope :approved, -> { where(status: 'approved') }
-  # scope :history, ->(item_id) { where("end_date < ?", DateTime.now) } 
+  scope :pending, -> { where(status: 'pending') }
+  scope :future, -> { where("start_date > ?", DateTime.now) }
+  scope :past, -> { where("end_date < ?", DateTime.now) } 
+  scope :approved, -> { where(status: 'approved') }
   belongs_to :user
   belongs_to :item
   has_one :review, class_name: "RentalReview", foreign_key: :rental_id
