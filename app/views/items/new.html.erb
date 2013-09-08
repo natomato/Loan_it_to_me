@@ -1,18 +1,18 @@
 <p>New Item</p>
-<%= form_for @item do |f| %>
-<%= f.label :home_id %>
-<%= f.number_field :home_id %>
-<%= f.label :category_id %>
-<%= f.number_field :category_id %>
+<%= form_for @item, :html => { :multipart => true } do |f| %>
+<select name="item[category_id]">
+  <option value="">Select a Category</option>
+  <% Category.all.each do |category| %>
+  <option value="<%= category.id %>"><%= category.name %></option>
+  <% end %>
+</select>
 <%= f.label :name %>
 <%= f.text_field :name %>
 <%= f.label :description %>
 <%= f.text_field :description %>
 <%= f.label :price %>
 <%= f.number_field :price %>
-<%= f.label :main_photo_id %>
-<%= f.number_field :main_photo_id %>
+<p>upload a photo</p>
+<%= f.file_field :photo %>
 <%= f.submit %>
 <% end %>
-
-<%= filepicker_save_button "Save", @itemphoto.filepicker_url, "image/jpg" %>

@@ -2,4 +2,10 @@
 <a href="/items/<%= item.id %>" class="name"><%= item.escape( 'name' ) %></a>
 <div class="description"><%= item.escape( 'description' ) %></div>
 <div class="price"><%= item.escape( 'price' ) %></div>
-<div class="rating"><%= item.escape( 'avg_rating' ) %></div>
+<div class="rating">
+  <span class="star" data-id="1">☆</span>
+  <span class="star" data-id="2">☆</span>
+  <span class="star" data-id="3">☆</span>
+  <span class="star" data-id="4">☆</span>
+  <span class="star" data-id="5">☆</span>
+</div>

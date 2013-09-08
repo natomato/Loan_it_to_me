@@ -16,6 +16,7 @@
 //= require backbone
 //= require bootstrap
 //
+//= require jquery.raty
 // I only need the swapping router and composite view
 //= require backbone-support
 //

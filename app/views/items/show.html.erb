@@ -2,29 +2,12 @@
 
   <div class="hero">
     <div class="photo">pic</div>
-    
-<table>
-  <tr><th>Id</th><th>Filepicker.io Url</th><th>image</th></tr>
-
-  <% @item_photo.each do |a| %>
-
-  <tr><td><%= a.id %></td><td><%= a.filepicker_url %></td>
-    <td><%= filepicker_image_tag a.filepicker_url, w: 300, h: 300 %></td>
-  <td><%= filepicker_save_button "Download", a.filepicker_url, "image/png" %></tr>
-
-  <% end %>
-  <script type="text/json">
-  filepicker.pickAndStore({},{},function(InkBlobs){
-   console.log(JSON.stringify(InkBlobs));
-    });
-    </script>
-</table>
-
     <div class="name"><%= @item.name %></div>
     <div class="description"><%= @item.description %></div>
     <div class="price"><%= @item.price %></div>
     <div class="rating"><%= @item.avg_rating %></div>
   </div>
+
 
   <div class="tabbable">
     <ul class="nav nav-tabs">
@@ -39,7 +22,9 @@
             <p><%= review.author.username %> </p>
             <p><%= review.title %> </p>
             <p><%= review.body %> </p>
-            <p><%= review.rating %> </p>
+            <div class="star">
+              <p><%= review.rating %> </p>
+            </div>
           </div>
         <% end %>
       </div>

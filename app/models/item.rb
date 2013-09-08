@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
-  attr_accessible :avg_rating, :category_id, :description, :home_id, :name, :price
+  attr_accessible :avg_rating, :category_id, :description, :home_id, :name, :price, :main_photo_id
+  
   validate :category_id, :home_id, :name, presence: true
   
   belongs_to :home
@@ -9,6 +10,18 @@ class Item < ActiveRecord::Base
   has_many :rentals
   has_many :reviews, through: :rentals, source: :review
   
+  def average_rating
+    item_id = id.to_i
+
+    RentalReview.find_by_sql(<<-SQL)
+      SELECT AVG(rating) rating
+      FROM rental_reviews JOIN rentals
+      ON rental_reviews.rental_id = rentals.id
+      WHERE rentals.item_id = #{item_id}
+    SQL
+    .first.rating.to_f
+  end
+
   def pending_requests
     self.rentals.pending.order("start_date ASC").all
   end
@@ -22,16 +35,5 @@ class Item < ActiveRecord::Base
     self.rentals.past.approved.order("end_date DESC").all
   end
 
-  def average_rating
-    item_id = id.to_i
 
-    RentalReview.find_by_sql(<<-SQL)
-      SELECT AVG(rating) rating
-      FROM rental_reviews JOIN rentals
-      ON rental_reviews.rental_id = rentals.id
-      WHERE rentals.item_id = #{item_id}
-    SQL
-    .first.rating.to_f
-
-  end
 end

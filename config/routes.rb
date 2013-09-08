@@ -6,9 +6,10 @@ LoanItToMe::Application.routes.draw do
   resources :users
   resources :homes
   resources :items do
-    resources :rentals
+    resources :rentals do
+      resources :rental_reviews
+    end
   end
-  resources :rental_reviews
   
 end
 

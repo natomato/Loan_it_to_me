@@ -26,6 +26,6 @@ gem "pg"
 gem "bcrypt-ruby"
 gem "ejs"
 gem 'aws-sdk'
-# gem 'paperclip'
-gem 'filepicker-rails'
+gem 'paperclip'
+# gem 'filepicker-rails'
 gem 'figaro'

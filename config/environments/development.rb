@@ -1,20 +1,24 @@
 LoanItToMe::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  # Paperclip Gem requires these settings
-  # config.paperclip_defaults = {
-  #   :storage => :s3,
-  #   :s3_credentials => {
-  #     :bucket => YOUR_BUCKET_NAME,
-  #     :access_key_id => YOUR_ACCESS_KEY_ID,
-  #     :secret_access_key => YOUR_SECRET_ACCESS_KEY
-  #   }
-  # }
-
+  #Paperclip Config settings
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV["PAPERCLIP_S3_BUCKET"],
+      :access_key_id => ENV["PAPERCLIP_ACCESS_KEY"],
+      :secret_access_key => ENV["PAPERCLIP_SECRET_ACCESS_KEY"]
+    }
+  }
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+  
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
+
+  # config.filepicker_rails.api_key = ENV[FILEPICKER_API_KEY]
+
 
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true

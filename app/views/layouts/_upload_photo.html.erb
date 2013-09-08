@@ -1,0 +1,4 @@
+<p>upload a photo</p>
+<%= form_for @user, :url => item_photo_url, :html => { :multipart => true } do |form| %>
+  <%= form.file_field :photo %>
+<% end %>

@@ -2,6 +2,7 @@
 <input type='hidden' name="authenticity_token" value="<%= form_authenticity_token %>">
 <input type='text' name='username' id='username' placeholder="username">
 <input type="password" name='password' id='password' placeholder="password">
+<%= link_to "Sign Up", new_user_url %>
 <input type="submit" value="Login">
 </form>
 <hr>

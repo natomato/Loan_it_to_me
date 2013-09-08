@@ -11,6 +11,10 @@ class ItemsController < ApplicationController
   end
 
   def create
+    @item_photo = ItemPhoto.new(item_id: params[:item][:id], photo: params[:item][:photo])
+    @item_photo.save!
+    params[:item].delete :photo
+    params[:item][:main_photo_id] = @item_photo.id
     @item = Item.new(params[:item])
     @item.save!
 
