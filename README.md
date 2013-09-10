@@ -10,8 +10,9 @@ It is designed to be a Single Page App.
 *Map display markers for homes (future drop down for items?)
 *display info window for tool at marker location
 *Upload item image
+**Enforce user is logged in
 *Upload several images for an item
-*Display a thumbnail of the image
+*~~Display a thumbnail of the image~~
 *New Item Form
 *Edit Item Form
 *Create 10 pics for Photo view

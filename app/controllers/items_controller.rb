@@ -13,14 +13,22 @@ class ItemsController < ApplicationController
   def create
     #TODO fill out transaction
     ActiveRecord::Base.transaction do
+      if params[:photo].nil?
+        p "**************** No Photo ***************"
+        params[:item][:main_photo_id] = 0 
+      else
+        @item_photo = ItemPhoto.new(item_id: params[:item][:id], photo: params[:photo])
+        @item_photo.save!
+        params.delete :photo
+        params[:item][:main_photo_id] = @item_photo.id
+      end
+      
+      p ['items param', params[:item]]
 
-      @item_photo = ItemPhoto.new(item_id: params[:item][:id], photo: params[:photo])
-      @item_photo.save!
-      params.delete :photo
-      params[:item][:main_photo_id] = @item_photo.id
       @item = Item.new(params[:item])
       @item.save!
     end
+
     render :json => @item
   end
 

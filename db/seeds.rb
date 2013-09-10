@@ -17,10 +17,10 @@ ActiveRecord::Base.transaction do
   Home.create!(latitude: 80.1234, longitude: 34.1234)
 
   #giver's items
-  Item.create!(home_id: 1, category_id: 1, name: "lawn mower", description: "runs good, don't break it")
-  Item.create!(home_id: 1, category_id: 1, name: "leaf blower", description: "it blows")
-  Item.create!(home_id: 1, category_id: 2, name: "hockey sticks", description: "like wayne gretzky")
-  Item.create!(home_id: 1, category_id: 2, name: "orange cones", description: "tall, very orange")
+  Item.create!(home_id: 1, category_id: 1, name: "lawn mower", description: "runs good, don't break it", main_photo_id: 2)
+  Item.create!(home_id: 1, category_id: 1, name: "leaf blower", description: "it blows", main_photo_id: 3)
+  Item.create!(home_id: 1, category_id: 2, name: "hockey sticks", description: "like wayne gretzky", main_photo_id: 4)
+  Item.create!(home_id: 1, category_id: 2, name: "orange cones", description: "tall, very orange", main_photo_id: 5)
 
   ItemPhoto.create(item_id: 0, photo: File.open("#{Rails.root}/app/assets/images/thumbnail-default-image.jpg"))
   ItemPhoto.create(item_id: 1, photo: File.open("#{Rails.root}/app/assets/images/lawnmower.jpg"))

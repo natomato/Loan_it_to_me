@@ -1,4 +1,4 @@
-LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
+  LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
    
   className: "index",
   template: JST['items/index'],
@@ -67,7 +67,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
 
   renderList: function() {
     var view = new LoanItToMe.Views.ItemsList({ collection: this.collection });
-
+    debugger
     this.swap(view);
   },
 
