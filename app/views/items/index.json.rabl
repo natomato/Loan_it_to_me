@@ -6,6 +6,6 @@ end
 node :num_reviews do |item|
   item.reviews.count
 end
-node :home do |item|
-  item.home.attributes
+node :photo do |item|
+  item.main_photo.photo.url
 end

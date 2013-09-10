@@ -15,6 +15,7 @@ LoanItToMe.Views.ItemDetail = Support.CompositeView.extend({
 
   render: function() {
     var renderedContent = this.template({ item: this.model });
+
     this.$el.html(renderedContent);
     
     //render the stars
@@ -27,7 +28,7 @@ LoanItToMe.Views.ItemDetail = Support.CompositeView.extend({
 
   highlight: function() {
     
-    debugger
+    console.log('highlight!')
 
     $(this.currentTarget).toggleClass("highlight");
   }

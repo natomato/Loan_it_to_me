@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :avg_rating, :category_id, :description, :home_id, :name, :price, :main_photo_id
+  attr_accessible :category_id, :description, :home_id, :name, :price, :main_photo_id
   
   validate :category_id, :home_id, :name, presence: true
   
@@ -10,7 +10,7 @@ class Item < ActiveRecord::Base
   has_one :main_photo, class_name: "ItemPhoto", primary_key: :main_photo_id, foreign_key: :id #, :dependent => :destroy
   has_many :rentals
   has_many :reviews, through: :rentals, source: :review
-  accepts_nested_attributes_for :photos, :main_photo
+  #accepts_nested_attributes_for :photos, :main_photo
 
   def average_rating
     item_id = id.to_i

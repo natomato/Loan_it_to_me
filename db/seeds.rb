@@ -11,17 +11,23 @@ ActiveRecord::Base.transaction do
   User.create!(username: "test", password_hash: "$2a$10$wtxQziDF.buPeAHJCHAkSOV1vRibyQ2eBGzWT7My3GoKJeW026JP2", selfie: "//test/pic/loc.png", session_token: "testtoken", bio: "im a test")
   User.create!(username: "moocher", password_hash: "$2a$10$JlRNa1UBoHPBJbQgEkuMcuNWjhA.x529wx//4Abv3LYjgodWUsb0a", session_token: "moochtoken", bio: "i like borrow things")
   User.create!(username: "giver", password_hash: "$2a$10$y1DwmLrCU2TBl5uaTUqoreexejaSNZr.QqrC2PHCEu/DpU9zOStA6", session_token: "givertoken", bio: "i like to loan things out", home_id: 1)
-  User.create!(username: "scrub", password_hash: "$2a$10$y1DwmLrCU2TBl5uaTUqoreexejaSNZr.QqrC2PHCEu/DpU9zOStA6", session_token: "scrubtoken", bio: "hangin out the passenger side of my best friends ride")
-
+  User.create!(username: "scrub", password_hash: "$2a$10$wtxQziDF.buPeAHJCHAkSOV1vRibyQ2eBGzWT7My3GoKJeW026JP2", session_token: "scrubtoken", bio: "hangin out the passenger side of my best friends ride")
+  
+  u = User.new({username: "user", password: "password", bio: "Im a guest."})
+  u.selfie = File.open('/assets/default-user-image.png')
+  u.save!
 
   #giver's home
-  Home.create!(latitude: 123456.1234, longitude: 123456.1234)
+  Home.create!(latitude: 80.1234, longitude: 34.1234)
 
   #giver's items
   Item.create!(home_id: 1, category_id: 1, name: "lawn mower", description: "runs good, don't break it")
   Item.create!(home_id: 1, category_id: 1, name: "leaf blower", description: "it blows")
   Item.create!(home_id: 1, category_id: 2, name: "hockey sticks", description: "like wayne gretzky")
   Item.create!(home_id: 1, category_id: 2, name: "orange cones", description: "tall, very orange")
+
+  ItemPhoto.create(item_id: 0, photo_file_name: "thumbnail-default-image.jpg", photo_content_type: "image/jpeg", photo_file_size: 11072, photo_updated_at: "2013-09-10 19:22:37")
+
 
   Category.create!(name: "Lawn and Garden")
   Category.create!(name: "Sports Equipment")

@@ -20,7 +20,12 @@ LoanItToMe.Views.ItemsMap = Support.CompositeView.extend({
       map: this.map,
       position: new google.maps.LatLng(appAcademy.attributes.latitude, appAcademy.attributes.longitude),
       title: 'App Academy'
-    });  
+    });
+
+    this.collection.each(function(item){
+      console.log(item.get('name'));
+    });
+    
     // var marker = new google.maps.Marker({
     //   position: this.map.getCenter(),
     //   map: this.map,
@@ -40,7 +45,7 @@ LoanItToMe.Views.ItemsMap = Support.CompositeView.extend({
     //   map.setCenter(location);
     // };     
     this.map.setCenter(marker1.position);
-    google.maps.event.trigger(this.map, 'resize');
+    //google.maps.event.trigger(this.map, 'resize');
     return this;
   }
 

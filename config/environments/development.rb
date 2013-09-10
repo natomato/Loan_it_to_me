@@ -7,8 +7,10 @@ LoanItToMe::Application.configure do
     :s3_credentials => {
       :bucket => ENV["PAPERCLIP_S3_BUCKET"],
       :access_key_id => ENV["PAPERCLIP_ACCESS_KEY"],
-      :secret_access_key => ENV["PAPERCLIP_SECRET_ACCESS_KEY"]
+      :secret_access_key => ENV["PAPERCLIP_SECRET_ACCESS_KEY"],
+      :s3_host_name => 's3-us-west-1.amazonaws.com'
     }
+
   }
   Paperclip.options[:command_path] = "/usr/local/bin/"
   

@@ -11,38 +11,7 @@
   </div>
 
 
-  <div class="tabbable">
-    <ul class="nav nav-tabs">
-      <li class="active"><a href="#reviews" data-toggle="tab">Reviews</a></li>
-      <li class=""><a href="#calendar" data-toggle="tab">Calendar</a></li>
-      <li class=""><a href="#owner" data-toggle="tab">Owner</a></li>
-    </ul>
-    <div class="tab-content">
-      <div class="tab-pane active" id="reviews">
-        <% @item.reviews.each do |review| %>
-          <div class="review">
-            <p><%= review.author.username %> </p>
-            <p><%= review.title %> </p>
-            <p><%= review.body %> </p>
-            <div class="star">
-              <p><%= review.rating %> </p>
-            </div>
-          </div>
-        <% end %>
-      </div>
 
-      <div class="tab-pane" id="calendar">
-        <input type="date">
-        
-        <button>Rent Me</button>
-      </div>
-
-      <div class="tab-pane" id="owner">
-        <!-- TODO: check syntax -->
-        <%= render partial: "layouts/user", locals: { user: @item.owner } %>
-      </div>
-    </div> <!-- /.tab content -->
-  </div> <!-- /.tabbable -->
 </div>
 
 <script type="text/javascript">

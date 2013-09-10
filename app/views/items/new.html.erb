@@ -3,7 +3,7 @@
 <% title =  @item.persisted? ? "Edit Item" : "Create Item" %>
 
 <h1><%= title %></h1>
-<form action="<%= action %>" method="">
+<form action="<%= action %>" method="POST" enctype="multipart/form-data">
   <input type="hidden" name="_method" value="<%= method %>">
   <input type="hidden" 
          name="authenticity_token" 
@@ -28,6 +28,6 @@
   <span class="currencyinput" id="item_price">$<input type="text" name="item[price]"></span>
   <br>
   <p>upload a photo</p>
-  <%=  %>
+  <input id="photo" name="photo" type="file">
+  <input type="submit" value="<%= title %>">
 </form>
-

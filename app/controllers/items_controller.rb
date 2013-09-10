@@ -11,11 +11,12 @@ class ItemsController < ApplicationController
   end
 
   def create
+    #TODO fill out transaction
     ActiveRecord::Base.transaction do
 
-      @item_photo = ItemPhoto.new(item_id: params[:item][:id], photo: params[:item][:photo])
+      @item_photo = ItemPhoto.new(item_id: params[:item][:id], photo: params[:photo])
       @item_photo.save!
-      params[:item].delete :photo
+      params.delete :photo
       params[:item][:main_photo_id] = @item_photo.id
       @item = Item.new(params[:item])
       @item.save!
@@ -26,7 +27,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @categories = Category.all
-
+    @item_photo = ItemPhoto.new
     render :new
   end
 
