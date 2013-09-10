@@ -20,5 +20,13 @@ class HomesController < ApplicationController
   def show
     current_user
     @home = Home.find(params[:id])
+    @home_loc = @home.to_json
+    @json = Home.all.to_gmaps4rails do |home, marker|
+      marker.json({ :id => home.id, :address => home.address })
+    end
+    
+    p ['home', @home]
+    p ['home_loc', @home_loc]
+    p ['json', @json]
   end
 end

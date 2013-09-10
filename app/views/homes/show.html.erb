@@ -25,3 +25,17 @@
   <input type="text" name="home[zipcode]" id="home_zipcode" value="<%= @home.zipcode %>">
   <input type="submit" value="update">
 </form>
+
+
+
+<%= gmaps4rails([{:lat => @home.latitude, :lng => @home.longitude}].to_json ) %>
+
+
+
+
+
+
+
+
+
+

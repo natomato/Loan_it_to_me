@@ -6,10 +6,12 @@ class Item < ActiveRecord::Base
   belongs_to :home
   belongs_to :category
   has_one :owner, through: :home, source: :user
-  has_many :photos, class_name: "ItemPhoto", foreign_key: :item_id
+  has_many :photos, class_name: "ItemPhoto", foreign_key: :item_id #, :dependent => :destroy
+  has_one :main_photo, class_name: "ItemPhoto", primary_key: :main_photo_id, foreign_key: :id #, :dependent => :destroy
   has_many :rentals
   has_many :reviews, through: :rentals, source: :review
-  
+  accepts_nested_attributes_for :photos, :main_photo
+
   def average_rating
     item_id = id.to_i
 

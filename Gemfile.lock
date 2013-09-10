@@ -71,6 +71,7 @@ GEM
     figaro (0.6.4)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    gmaps4rails (1.5.6)
     hike (1.2.3)
     i18n (0.6.5)
     journey (1.0.4)
@@ -174,6 +175,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   ejs
   figaro
+  gmaps4rails
   jquery-rails
   paperclip
   pg

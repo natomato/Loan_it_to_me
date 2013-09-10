@@ -21,7 +21,24 @@
   .highlight {
     background: lightgray;
   }
+}
 
+#map-canvas{
+  // z-index: 10;
+  display: block !important;
+  width: 700px;
+  height: 500px;
+  background-color: yellow;
+}
+
+//using jquery's .hide() and .show() instead
+.hide {
+  position:relative;
+  left:-10000px;
+  top:-10000px;
+  width:700px;
+  height:500px;
+  overflow:hidden;
 }
 
 .category-item {

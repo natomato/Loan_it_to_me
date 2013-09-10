@@ -9,5 +9,5 @@ class ItemPhoto < ActiveRecord::Base
     :small => "114x74>",
     :tiny => "40x40#"
   }
-  
+
 end

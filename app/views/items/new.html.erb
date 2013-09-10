@@ -1,18 +1,33 @@
-<p>New Item</p>
-<%= form_for @item, :html => { :multipart => true } do |f| %>
-<select name="item[category_id]">
-  <option value="">Select a Category</option>
-  <% Category.all.each do |category| %>
-  <option value="<%= category.id %>"><%= category.name %></option>
-  <% end %>
-</select>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.label :description %>
-<%= f.text_field :description %>
-<%= f.label :price %>
-<%= f.number_field :price %>
-<p>upload a photo</p>
-<%= f.file_field :photo %>
-<%= f.submit %>
-<% end %>
+<% action = @item.persisted? ? item_url(@item) : items_url %>
+<% method = @item.persisted? ? :put : :post %>
+<% title =  @item.persisted? ? "Edit Item" : "Create Item" %>
+
+<h1><%= title %></h1>
+<form action="<%= action %>" method="">
+  <input type="hidden" name="_method" value="<%= method %>">
+  <input type="hidden" 
+         name="authenticity_token" 
+         value="<%= form_authenticity_token %>">  
+
+  <label for="category">Category</label>
+  <select name="item[category_id]" id="category">
+      <option value=""></option>
+    <% @categories.each do |category| %>
+      <option value="<%= category.id %>"><%= category.name %></option>
+    <% end %>
+  </select>
+  <br>
+  <label for="item_name">Item:</label>
+  <input type="text" name="item[name]" id="item_name" value="<%= @item.name %>">
+  <br>
+  <label for="item_description">Description</label>
+  <br>
+  <textarea name="item[description]" id="item_description" cols="30" rows="10"></textarea>
+  <br>
+  <label for="item_price">Cost to Rent</label>
+  <span class="currencyinput" id="item_price">$<input type="text" name="item[price]"></span>
+  <br>
+  <p>upload a photo</p>
+  <%=  %>
+</form>
+

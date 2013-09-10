@@ -11,19 +11,21 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item_photo = ItemPhoto.new(item_id: params[:item][:id], photo: params[:item][:photo])
-    @item_photo.save!
-    params[:item].delete :photo
-    params[:item][:main_photo_id] = @item_photo.id
-    @item = Item.new(params[:item])
-    @item.save!
+    ActiveRecord::Base.transaction do
 
+      @item_photo = ItemPhoto.new(item_id: params[:item][:id], photo: params[:item][:photo])
+      @item_photo.save!
+      params[:item].delete :photo
+      params[:item][:main_photo_id] = @item_photo.id
+      @item = Item.new(params[:item])
+      @item.save!
+    end
     render :json => @item
   end
 
   def new
     @item = Item.new
-
+    @categories = Category.all
 
     render :new
   end
@@ -40,8 +42,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @item_photo = [ItemPhoto.new(item_id: @item.id)]
-    p ['item.photo', @item.photos]
-    p ['item_photo', @item_photo]
+
 
     # not using the json
     respond_to do |format|

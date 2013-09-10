@@ -14,13 +14,43 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     this.currentView = new LoanItToMe.Views.ItemsList({ 
       collection: this.collection
     });
+    this.$map = null;
+    this.map = null;
+  },
+
+  initializeMap: function() {
+
+    console.log('initializing the map')
+    var center = new google.maps.LatLng(-25.363882, 131.044922);
+
+    // var styles = [
+    //   {
+    //     elementType: "geometry",
+    //     stylers: [
+    //       { lightness: 33 },
+    //       { saturation: -90 }
+    //     ]
+    //   }
+    // ];
+    
+    var mapOptions = {
+      center: center,
+      zoom: 12,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      //disableDefaultUI: true,
+      //draggable: true,
+      // styles: styles
+    };
+
+    //must pass the constructor a DOM element, not jQuery
+    this.map = new google.maps.Map(this.$map[0], mapOptions);
   },
 
   render: function() {
     this.renderLayout();
     this.renderViewOptions();    
-    //Every view gets its own copy of the collection this way. Better way?
-    this.swap(this.currentView);
+    this.initializeMap();
+    this.swap(this.currentView); //Every view gets a copy of the collection. Better way?
 
     return this;
   },
@@ -32,6 +62,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
 
   renderLayout: function() {
     this.$el.html(this.template());
+    this.$map = this.$('#map-canvas');
   },
 
   renderList: function() {
@@ -41,10 +72,16 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   },
 
   renderMap: function() {
-    console.log("get a map");
-    // e.preventDefault;
-    var view = new LoanItToMe.Views.ItemsMap({ collection: this.collection })
+    var view = new LoanItToMe.Views.ItemsMap({ 
+      collection: this.collection, 
+      el: this.$map,
+      map: this.map
+    });
+    console.log('renderMap swaps the view')
     this.swap(view);
+    //To prevent missing tiles, call resize on the map after rendering into main view
+    //view.render();
+    google.maps.event.trigger(this.map, 'resize');
   },
 
   renderPhotos: function() {
@@ -68,7 +105,14 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     this.currentView.leave();
     this.currentView = newView;
 
+    if( newView.id === 'map-canvas' ){
+      this.$map.show(); 
+    } else {
+      this.$map.hide();
+    }
+
     //renderChildInto will call .empty() on the container
     this.renderChildInto(newView, this.$('.results'));
   }
+
 });

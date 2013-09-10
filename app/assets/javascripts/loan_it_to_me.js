@@ -5,7 +5,7 @@ window.LoanItToMe = {
   Routers: {},
   initialize: function() {
     var options = { $rootEl: $('.container') };
-    var mainRouter = new LoanItToMe.Routers.Main( options );
+    LoanItToMe.mainRouter = new LoanItToMe.Routers.Main( options );
     Backbone.history.start();
   }
 };

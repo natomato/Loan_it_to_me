@@ -24,17 +24,17 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
     //var owner = new LoanItToMe.Models.User();
     // var photo = new LoanItToMe.Models.Photo();
 
-    item.fetch().done(function(data) {
-      console.log("fetched data");
-      var rentals = new LoanItToMe.Collections.Rentals({ model: rental });
-      //var reviews = new LoanItToMe.Collections.Reviews({ model: review });
-      //var owner   = new LoanItToMe.Model.User({ data.owner })
-      var detailView = new LoanItToMe.Views.ItemDetailPage({ model: item });
-      _this.$rootEl.html(detailView.render().$el);
-      debugger
-    }).fail(function() {
-      console.log("itemDetail fetch failed");
-    });
+    // item.fetch().done(function(data) {
+    //   console.log("fetched data");
+    //   var rentals = new LoanItToMe.Collections.Rentals({ model: rental });
+    //   //var reviews = new LoanItToMe.Collections.Reviews({ model: review });
+    //   //var owner   = new LoanItToMe.Model.User({ data.owner })
+    //   var detailView = new LoanItToMe.Views.ItemDetailPage({ model: item });
+    //   _this.$rootEl.html(detailView.render().$el);
+    //   debugger
+    // }).fail(function() {
+    //   console.log("itemDetail fetch failed");
+    // });
   },
 
   itemsIndex: function(id) {
@@ -42,10 +42,11 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
     var items = new LoanItToMe.Collections.Items();
     var _this = this;
     items.fetch({data: {category_id: id}}).done(function() {
+      console.log("fetched data from server")
       var indexView = new LoanItToMe.Views.ItemsIndex({ collection: items });
       _this.$rootEl.html(indexView.render().$el);
     }).fail(function(model, xhr, options) {
-      console.log("not for reail")
+      console.log("not for real")
     });
   }
 
