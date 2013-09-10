@@ -13,10 +13,6 @@ ActiveRecord::Base.transaction do
   User.create!(username: "giver", password_hash: "$2a$10$y1DwmLrCU2TBl5uaTUqoreexejaSNZr.QqrC2PHCEu/DpU9zOStA6", session_token: "givertoken", bio: "i like to loan things out", home_id: 1)
   User.create!(username: "scrub", password_hash: "$2a$10$wtxQziDF.buPeAHJCHAkSOV1vRibyQ2eBGzWT7My3GoKJeW026JP2", session_token: "scrubtoken", bio: "hangin out the passenger side of my best friends ride")
   
-  u = User.new({username: "user", password: "password", bio: "Im a guest."})
-  u.selfie = File.open('/assets/default-user-image.png')
-  u.save!
-
   #giver's home
   Home.create!(latitude: 80.1234, longitude: 34.1234)
 
@@ -26,9 +22,12 @@ ActiveRecord::Base.transaction do
   Item.create!(home_id: 1, category_id: 2, name: "hockey sticks", description: "like wayne gretzky")
   Item.create!(home_id: 1, category_id: 2, name: "orange cones", description: "tall, very orange")
 
-  ItemPhoto.create(item_id: 0, photo_file_name: "thumbnail-default-image.jpg", photo_content_type: "image/jpeg", photo_file_size: 11072, photo_updated_at: "2013-09-10 19:22:37")
-
-
+  ItemPhoto.create(item_id: 0, photo: File.open("#{Rails.root}/app/assets/images/thumbnail-default-image.jpg"))
+  ItemPhoto.create(item_id: 1, photo: File.open("#{Rails.root}/app/assets/images/lawnmower.jpg"))
+  ItemPhoto.create(item_id: 2, photo: File.open("#{Rails.root}/app/assets/images/leaf-blower.jpeg"))
+  ItemPhoto.create(item_id: 3, photo: File.open("#{Rails.root}/app/assets/images/hockey-sticks.jpg"))
+  ItemPhoto.create(item_id: 4, photo: File.open("#{Rails.root}/app/assets/images/orange-cones.jpg"))
+  
   Category.create!(name: "Lawn and Garden")
   Category.create!(name: "Sports Equipment")
   Category.create!(name: "Kitchen Supplies")
