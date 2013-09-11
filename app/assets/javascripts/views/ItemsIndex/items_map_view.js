@@ -13,7 +13,7 @@ LoanItToMe.Views.ItemsMap = Support.CompositeView.extend({
 
   render: function(){
     var _this = this;
-    var appAcademy = this.collection.get(1).attributes.home;
+    var appAcademy = this.collection.get(2).attributes.home;
 
 
     var marker1 = new google.maps.Marker({
@@ -46,6 +46,7 @@ LoanItToMe.Views.ItemsMap = Support.CompositeView.extend({
     // };     
     this.map.setCenter(marker1.position);
     //google.maps.event.trigger(this.map, 'resize');
+    debugger
     return this;
   }
 

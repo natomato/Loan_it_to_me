@@ -10,15 +10,24 @@ class Home < ActiveRecord::Base
   #                 :address => "address", :normalized_address => "address",
   #                 :msg => "Sorry, not even Google could figure out where that is"
 
-  def geocode?
-    (!address.blank? && (latitude.blank? || longitude.blank?)) || address_change?
-  end
+  # def geocode?
+  #   (!address.blank? && (latitude.blank? || longitude.blank?)) || address_change?
+  # end
 
-  def address_change?
-    false
-  end
+  # def address_change?
+  #   false
+  # end
 
   # def gmaps4rails_address
   #   self.address
   # end
+  def all_rentals
+    all_rentals = []
+    self.items.each do |item|
+      all_rentals.concat( item.rentals )
+    end
+    all_rentals
+  end 
+
+
 end

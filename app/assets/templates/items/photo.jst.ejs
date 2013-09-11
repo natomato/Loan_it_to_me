@@ -1,5 +1,7 @@
 <div class="item" data-id="<%= item.id %>">
-<div class="photo">pic</div>
+<div class="photo">
+  <img src="<%= item.escape( 'photo_medium' ) %>" alt="">
+</div>
 <a href="/items/<%= item.id %>" class="name"><%= item.escape( 'name' ) %></a>
 <div class="description"><%= item.escape( 'description' ) %></div>
 <div class="price"><%= item.escape( 'price' ) %></div>

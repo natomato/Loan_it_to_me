@@ -11,22 +11,31 @@ ActiveRecord::Base.transaction do
   User.create!(username: "test", password_hash: "$2a$10$wtxQziDF.buPeAHJCHAkSOV1vRibyQ2eBGzWT7My3GoKJeW026JP2", selfie: "//test/pic/loc.png", session_token: "testtoken", bio: "im a test")
   User.create!(username: "moocher", password_hash: "$2a$10$JlRNa1UBoHPBJbQgEkuMcuNWjhA.x529wx//4Abv3LYjgodWUsb0a", session_token: "moochtoken", bio: "i like borrow things")
   User.create!(username: "giver", password_hash: "$2a$10$y1DwmLrCU2TBl5uaTUqoreexejaSNZr.QqrC2PHCEu/DpU9zOStA6", session_token: "givertoken", bio: "i like to loan things out", home_id: 1)
-  User.create!(username: "scrub", password_hash: "$2a$10$wtxQziDF.buPeAHJCHAkSOV1vRibyQ2eBGzWT7My3GoKJeW026JP2", session_token: "scrubtoken", bio: "hangin out the passenger side of my best friends ride")
-  
+  User.create!(username: "guest", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "scrubtoken", bio: "hangin out the passenger side of my best friends ride", home_id: 2)
+  User.create!(username: "guest2", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "scrubtoken", bio: "hangin out the passenger side of my best friends ride", home_id: 3)
+    
   #giver's home
-  Home.create!(latitude: 80.1234, longitude: 34.1234)
+  Home.create!(latitude: 37.7811812, longitude: -122.4116329)
+  #guest home
+  Home.create!(latitude: 37.6501812, longitude: -122.3816329)
+  #guest2 home
+  Home.create!(latitude: 37.8811812, longitude: -122.4916329)
 
   #giver's items
   Item.create!(home_id: 1, category_id: 1, name: "lawn mower", description: "runs good, don't break it", main_photo_id: 2)
   Item.create!(home_id: 1, category_id: 1, name: "leaf blower", description: "it blows", main_photo_id: 3)
   Item.create!(home_id: 1, category_id: 2, name: "hockey sticks", description: "like wayne gretzky", main_photo_id: 4)
   Item.create!(home_id: 1, category_id: 2, name: "orange cones", description: "tall, very orange", main_photo_id: 5)
+  #guest's items
+  Item.create!(home_id: 2, category_id: 1, name: "a rake", description: "asldf alsdf alsdf", main_photo_id: 1)
+  #guest2's items
+  Item.create!(home_id: 3, category_id: 1, name: "wheelbarrow", description: "asldasdff alsdf alsdf", main_photo_id: 1)
 
-  ItemPhoto.create(item_id: 0, photo: File.open("#{Rails.root}/app/assets/images/thumbnail-default-image.jpg"))
-  ItemPhoto.create(item_id: 1, photo: File.open("#{Rails.root}/app/assets/images/lawnmower.jpg"))
-  ItemPhoto.create(item_id: 2, photo: File.open("#{Rails.root}/app/assets/images/leaf-blower.jpeg"))
-  ItemPhoto.create(item_id: 3, photo: File.open("#{Rails.root}/app/assets/images/hockey-sticks.jpg"))
-  ItemPhoto.create(item_id: 4, photo: File.open("#{Rails.root}/app/assets/images/orange-cones.jpg"))
+  ItemPhoto.create(item_id: 1, photo: File.open("#{Rails.root}/app/assets/images/thumbnail-default-image.jpg"))
+  ItemPhoto.create(item_id: 2, photo: File.open("#{Rails.root}/app/assets/images/lawnmower.jpg"))
+  ItemPhoto.create(item_id: 3, photo: File.open("#{Rails.root}/app/assets/images/leaf-blower.jpeg"))
+  ItemPhoto.create(item_id: 4, photo: File.open("#{Rails.root}/app/assets/images/hockey-sticks.jpg"))
+  ItemPhoto.create(item_id: 5, photo: File.open("#{Rails.root}/app/assets/images/orange-cones.jpg"))
   
   Category.create!(name: "Lawn and Garden")
   Category.create!(name: "Sports Equipment")
