@@ -1,3 +1,4 @@
+<img src="/assets/loanittome_logo.png" alt="">
 <div class="container">
   <% @categories.each do |category| %>
   <div class="category-item span4 offset4 text-center" data-category="<%= category.id %>">
@@ -6,3 +7,9 @@
   <% end %>
 </div>
 
+<script id="category-index-page">
+  $(document).ready(function() {
+    var options = { $rootEl: $('.container') };
+    LoanItToMe.initialize(options);
+  });
+</script>

@@ -14,8 +14,7 @@ class ItemsController < ApplicationController
     #TODO fill out transaction
     ActiveRecord::Base.transaction do
       if params[:photo].nil?
-        p "**************** No Photo ***************"
-        params[:item][:main_photo_id] = 0 
+        params[:item][:main_photo_id] = 1
       else
         @item_photo = ItemPhoto.new(item_id: params[:item][:id], photo: params[:photo])
         @item_photo.save!
@@ -23,8 +22,6 @@ class ItemsController < ApplicationController
         params[:item][:main_photo_id] = @item_photo.id
       end
       
-      p ['items param', params[:item]]
-
       @item = Item.new(params[:item])
       @item.save!
     end

@@ -2,17 +2,30 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
   
   routes: {
     "" : "categoriesIndex",
-    "categories/:id": "itemsIndex"
+    "categories/:id": "itemsIndex",
+    "homes/:id": "inventory",
     //"items/:id": "itemsDetail"
   },
 
+  //not a true options hash extend, works b/c options is never null
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
+    this.collection = options.collection;
   },
 
   categoriesIndex: function() {
     //nothing to render, just adding event listeners
     var categoriesIndex = new LoanItToMe.Views.CategoryIndex();
+  },
+
+  inventory: function(id) {
+    console.log('mainRouter - inventory')
+    //the homes_show page is bootstrapped with rental request data passed into router as JSON
+    var rentals = new LoanItToMe.Collections.Rentals(this.collection);
+    var inventoryView = new LoanItToMe.Views.Inventory({ collection: this.collection });
+
+    //nothing to render, rails served up the form completely
+    // this.$rootEl.html(inventoryView.render().$el);
   },
 
   itemsDetail: function(id) {

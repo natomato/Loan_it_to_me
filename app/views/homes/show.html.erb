@@ -1,10 +1,11 @@
 <div class="inventory">
   <% @home.items.sort.each do |item| %>
-    <div class="photo small"><%# put main photo here %></div>
-    <div class="item">
-      <%= item.name %>
+    <div class="item row">
+      <div class="item-name"><%= item.name %></div>
+      <div class="photo"><%= image_tag item.main_photo.photo.url(:small) %></div>
       <% item.pending_requests.each do |request| %>
         <li class="request">
+          <span class="button"><input type="radio" name="request_id" value="<%= request.id %>"></span>
           <%= request.user.username %>
           <span class="start"><%= request.start_date.strftime('%A, %b %d: %l:%M %p') %></span>  
           <span class="end"><%= request.end_date.strftime('%A, %b %d: %l:%M %p') %></span> 
@@ -13,6 +14,13 @@
     </div>  
   <% end %>
 </div>
+
+<%= link_to "Create a new Item", new_item_url %>
+
+<%= render partial: "homes/form" %>
+<br>
+<p>or type it out the long way</p>
+<h6>this way currently doesn't work</h6>
 <form action="<%= home_url(@home) %>" class="home edit">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <label for="home_street" class="">Street</label>
@@ -26,16 +34,18 @@
   <input type="submit" value="update">
 </form>
 
-
-
-<%= gmaps4rails([{:lat => @home.latitude, :lng => @home.longitude}].to_json ) %>
-
-
-
-
-
-
-
-
+<!-- TODO: Risks code injection, move to a backbone AJAX request -->
+<script id="bootstrapped-rentals">
+$(document).ready(function() {
+    var id = <%= @home.id %>
+    var rentals = <%= @home_rentals.to_json.html_safe %>;
+    var options = { 
+      $rootEl: $('.inventory'),
+      collection: rentals
+    };
+    LoanItToMe.initialize(options);
+    // LoanItToMe.mainRouter.navigate("homes/" + id, {trigger: true })
+  });
+</script>
 
 

@@ -6,6 +6,16 @@ end
 node :num_reviews do |item|
   item.reviews.count
 end
-node :photo_tiny do |item|
+node :photo_small do |item|
   item.main_photo.photo.url(:small)
 end
+node :photo_medium do |item|
+  item.main_photo.photo.url(:medium)
+end
+node :photo_big do |item|
+  item.main_photo.photo.url(:big)
+end
+child :home do |item|
+  attributes :latitude, :longitude
+end
+  

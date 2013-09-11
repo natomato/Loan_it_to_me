@@ -12,4 +12,14 @@ module SessionsHelper
   def logged_in?
     !!@current_user
   end
+
+  #TODO: remove print
+  def require_login
+    p ['require login', current_user]
+    unless logged_in?
+      flash[:errors] ||= []
+      flash[:errors] << "You must be logged in to access this resource"
+      redirect_to new_session_url
+    end
+  end
 end

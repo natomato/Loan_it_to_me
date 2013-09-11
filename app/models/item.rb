@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
   attr_accessible :category_id, :description, :home_id, :name, :price, :main_photo_id
   
-  validate :category_id, :home_id, :name, presence: true
+  validate :category_id, :home_id, :main_photo_id, :name, presence: true
   
   belongs_to :home
   belongs_to :category

@@ -3,13 +3,16 @@ window.LoanItToMe = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function() {
-    var options = { $rootEl: $('.container') };
+  initialize: function(options) {
+    //var options = { $rootEl: $('.container') };
     LoanItToMe.mainRouter = new LoanItToMe.Routers.Main( options );
-    Backbone.history.start();
+    Backbone.history.start({ pushState: true });
   }
 };
 
-$(document).ready(function() {
-  LoanItToMe.initialize();
-});
+//moved the initial on-ready function into every view that kicks off the app
+//because the app has more than one entry point
+// $(document).ready(function() {
+//   var options = { $rootEl: $('.container') };
+//   LoanItToMe.initialize(options);
+// });

@@ -67,7 +67,6 @@
 
   renderList: function() {
     var view = new LoanItToMe.Views.ItemsList({ collection: this.collection });
-    debugger
     this.swap(view);
   },
 

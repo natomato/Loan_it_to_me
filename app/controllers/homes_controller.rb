@@ -1,7 +1,14 @@
 class HomesController < ApplicationController
+  include HomesHelper
+  #require current user for new, show, create, and destroy
+  before_filter :require_login
+
   def create
-    @home = Home.create(params[:home])
-    
+
+    pos = get_lat_lng(params[:home][:address])
+    @home = Home.create(latitude: pos[0], longitude: pos[1])
+    current_user.home_id = @home.id
+    redirect_to home_url(@home)
   end
 
   def new
@@ -14,19 +21,21 @@ class HomesController < ApplicationController
   def edit
   end
 
+  #TODO: allow user to type in address to autofill the address form using AJAX
+  def geocode
+
+  end
+
   def update
   end
 
   def show
     current_user
     @home = Home.find(params[:id])
-    @home_loc = @home.to_json
-    @json = Home.all.to_gmaps4rails do |home, marker|
-      marker.json({ :id => home.id, :address => home.address })
-    end
-    
-    p ['home', @home]
-    p ['home_loc', @home_loc]
-    p ['json', @json]
+    @home_rentals = @home.all_rentals #TODO: this variable is here to make explicit the methods im using
+    @item = Item.new              #TODO: remove the new item subform to a new page and delete this
+    @categories = Category.all    #TODO: remove the new item subform to a new page and delete this
+    p ['home------------->', @home]
+    render :show
   end
 end

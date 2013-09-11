@@ -10,20 +10,22 @@
 </script>
 </head>
 <body>
+<div class="top-bar">
+  <% if current_user %>
+    <%= link_to current_user.username, user_url(current_user) %>
+    <%= button_to "Log Out", session_url, method: :delete %>
+  <% else %>
+    <%= render "layouts/login" %>
+  <% end %>
+
+</div><!-- /.top-bar -->
+
 
 <!-- Flash Notices -->
 <% if flash[:errors] %>
   <% flash[:errors].each do |msg| %>
     <div class="error"><%= msg %></div>
   <% end %>
-<% end %>
-
-<!-- Login / Logout Form -->
-<% if current_user %>
-  <%= link_to current_user.username, user_url(current_user) %>
-  <%= button_to "Log Out", session_url, method: :delete %>
-<% else %>
-  <%= render "layouts/login" %>
 <% end %>
 
 

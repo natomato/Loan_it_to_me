@@ -19,6 +19,10 @@ group :development do
   gem "rspec-rails", '~> 2.0'
 end
 
+# FOR GOOGLE GEOCODING API
+gem 'rest-client'
+gem 'addressable'
+
 gem "backbone-on-rails"
 gem "backbone-support"
 gem "rabl"
@@ -29,4 +33,4 @@ gem 'aws-sdk'
 gem 'paperclip'
 # gem 'filepicker-rails'
 gem 'figaro'
-gem 'gmaps4rails'
+# gem 'gmaps4rails'
