@@ -1,9 +1,10 @@
+<!-- TODO: add link so user can go back to search results -->
 <%= nav_bar :fixed => :top, :brand => "Loan It To Me", :responsive => true do %>
   <%= menu_group :pull => :right do %>
-    <% if @current_user %>
-      <%= menu_item "Welcome, " + @current_user.username, users_url(@current_user) %>
-      <%= menu_item "Requests", users_url(@current_user) -%>
-      <%= menu_item "Inventory", home_url(@current_user.home) %>
+    <% if current_user %>
+      <%= menu_item "Welcome, " + current_user.username, user_url(current_user) %>
+      <%= menu_item "Requests", user_url(current_user) -%>
+      <%= menu_item "Inventory", home_url(current_user.home) %>
       <%= menu_item "Log Out", session_url, method: :delete %>
     <% else %>
       <div class="navbar-form pull-right">

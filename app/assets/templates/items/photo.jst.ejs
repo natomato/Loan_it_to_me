@@ -1,9 +1,10 @@
-<div class="item" data-id="<%= item.id %>">
-<div class="photo">
-  <img src="<%= item.escape( 'photo_medium' ) %>" alt="">
-</div>
-<a href="/items/<%= item.id %>" class="name"><%= item.escape( 'name' ) %></a>
-<div class="description"><%= item.escape( 'description' ) %></div>
-<div class="price"><%= item.escape( 'price' ) %></div>
-<div class="rating"><%= item.escape( 'avg_rating' ) %></div>
+<div class="span4">
+  <div class="item thumbnail" data-id="<%= item.id %>">
+    <div class="photo">
+      <img src="<%= item.escape( 'photo_medium' ) %>" alt="">
+    </div>
+    <a href="/items/<%= item.id %>" class="name"><%= item.escape( 'name' ) %></a>
+    <div class="price"><%= item.escape( 'price' ) %></div>
+    <div class="rating"><%= item.escape( 'avg_rating' ) %></div>
+  </div>
 </div>

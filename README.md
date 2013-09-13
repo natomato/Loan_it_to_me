@@ -7,16 +7,15 @@ It is designed to be a Single Page App.
 * ~~Geocode an address~~
 * ~~New Home Form~~
 * Edit home form
-* Map display markers for homes (future drop down for items?)
+* ~~Map display markers for homes~~
 * display info window for tool at marker location
 * ~~Upload item image~~
   * Enforce user is logged in
   * Enforce user has a home
 * Upload several images for an item
 * ~~Display a thumbnail of the image~~
-* New Item Form
+* ~~New Item Form~~
 * Edit Item Form
 * Create 10 pics for Photo view
-* Resize logo to top bar
 * give paperclip a default_url
 * ~~Backbone pushState~~

@@ -1,7 +1,7 @@
 class HomesController < ApplicationController
   include HomesHelper
   #require current user for new, show, create, and destroy
-  before_filter :require_login
+  before_filter :require_login, except: [:index]
 
   def index
     @cat_id = params[:category_id]
@@ -45,7 +45,7 @@ class HomesController < ApplicationController
     @home_rentals = @home.all_rentals #TODO: this variable is here to make explicit the methods im using
     @item = Item.new              #TODO: remove the new item subform to a new page and delete this
     @categories = Category.all    #TODO: remove the new item subform to a new page and delete this
-    p ['home------------->', @home]
+
     render :show
   end
 end

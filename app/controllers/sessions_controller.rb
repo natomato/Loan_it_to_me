@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       login!(@user)
-      redirect_to :root
+      redirect_to user_url(@user)
     else
       flash[:errors] ||= []
       flash[:errors] << "Username or password not found" 
