@@ -17,9 +17,9 @@ ActiveRecord::Base.transaction do
   #giver's home
   Home.create!(latitude: 37.7811812, longitude: -122.4116329)
   #guest home
-  Home.create!(latitude: 37.6501812, longitude: -122.3816329)
+  Home.create!(latitude: 37.7808, longitude: -122.4100)
   #guest2 home
-  Home.create!(latitude: 37.8811812, longitude: -122.4916329)
+  Home.create!(latitude: 37.7477, longitude: -122.4409)
 
   #giver's items
   Item.create!(home_id: 1, category_id: 1, name: "lawn mower", description: "runs good, don't break it", main_photo_id: 2)

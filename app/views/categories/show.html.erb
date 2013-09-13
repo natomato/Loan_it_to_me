@@ -1,5 +1,8 @@
-<div class="container"></div>
-<!-- TODO: This template is for refactoring; the itemindex page should start here with bootstrapped data instead -->
-<script type="application/json">
-  var categoryItems = <%= @items.to_json %>;
+<div class="main-content"></div>
+
+<script>
+  $(document).ready(function() {
+    var options = { $rootEl: $('.main-content') };
+    LoanItToMe.initialize(options);
+  });
 </script>

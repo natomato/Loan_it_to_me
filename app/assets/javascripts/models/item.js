@@ -5,8 +5,14 @@ LoanItToMe.Models.Item = Backbone.Model.extend({
   },
 
   parse: function(params) {
-    params.home = new LoanItToMe.Models.Home(params.home);
-    return params;
+    if (params.home === undefined){
+      return params;
+      console.log(params);
+    } else {
+      params.home = new LoanItToMe.Models.Home(params.home);
+      console.log(params);
+      return params;
+    }
   },
 
   toJSON: function() {

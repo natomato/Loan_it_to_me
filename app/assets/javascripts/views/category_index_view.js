@@ -1,6 +1,6 @@
 LoanItToMe.Views.CategoryIndex = Backbone.View.extend({
 
-  el: ".container",
+  //el: ".container",
 
   events: {
     "mouseover .category-item": "highlight",

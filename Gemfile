@@ -31,6 +31,8 @@ gem "bcrypt-ruby"
 gem "ejs"
 gem 'aws-sdk'
 gem 'paperclip'
-# gem 'filepicker-rails'
+gem 'oj'
 gem 'figaro'
-# gem 'gmaps4rails'
+gem 'twitter-bootstrap-rails'
+gem "therubyracer"
+gem "less-rails"

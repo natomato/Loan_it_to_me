@@ -2,6 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.view-options {
+  overflow: auto;
+
+  .views {
+    float: right;
+  }
+}
+
+.starred {
+  color: blue;
+  // ★
+}
+
+.unstarred {
+  // ☆
+}
+
+//used to render google map offscreen
+.hide {
+  position:relative;
+  left:-10000px;
+  top:-10000px;
+  width:700px;
+  height:500px;
+  overflow:hidden;
+}
+
 .results {
   .photo {
     display: inline-block;
@@ -24,21 +51,17 @@
   }
 }
 
+.inventory {
+  .photo {
+    float: left;
+  }
+}
+
 #map-canvas{
   // z-index: 10;
   display: block !important;
-  width: 700px;
-  height: 500px;
-}
-
-//using jquery's .hide() and .show() instead
-.hide {
-  position:relative;
-  left:-10000px;
-  top:-10000px;
-  width:700px;
-  height:500px;
-  overflow:hidden;
+  width: 1000px;
+  height: 700px;
 }
 
 .category-item {
@@ -50,3 +73,4 @@
     text-decoration: none;
   }
 }
+

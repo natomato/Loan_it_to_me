@@ -15,7 +15,10 @@ end
 node :photo_big do |item|
   item.main_photo.photo.url(:big)
 end
-child :home do |item|
+child :home do |home|
   attributes :latitude, :longitude
+  node :item_ids do
+    home.items.pluck(:id)
+  end
 end
   

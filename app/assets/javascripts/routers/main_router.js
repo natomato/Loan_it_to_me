@@ -1,21 +1,23 @@
 LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
   
   routes: {
-    "" : "categoriesIndex",
+    "": "categoriesIndex",
+    "categories" : "categoriesIndex",
     "categories/:id": "itemsIndex",
     "homes/:id": "inventory",
     //"items/:id": "itemsDetail"
   },
 
-  //not a true options hash extend, works b/c options is never null
+  //options 
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
     this.collection = options.collection;
   },
 
   categoriesIndex: function() {
+    console.log("categories index - js loaded")
     //nothing to render, just adding event listeners
-    var categoriesIndex = new LoanItToMe.Views.CategoryIndex();
+    var categoriesIndex = new LoanItToMe.Views.CategoryIndex({ el: this.$rootEl });
   },
 
   inventory: function(id) {
@@ -54,12 +56,31 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
 
     var items = new LoanItToMe.Collections.Items();
     var _this = this;
+
+    //TODO: use $.when to chain these deferreds
     items.fetch({data: {category_id: id}}).done(function() {
-      console.log("fetched data from server")
-      var indexView = new LoanItToMe.Views.ItemsIndex({ collection: items });
-      _this.$rootEl.html(indexView.render().$el);
+
+      console.log("fetched items") //a nested collection with homes
+      
+      var homes = new LoanItToMe.Collections.Homes();
+      homes.fetch({data: { category_id: id }}).done(function(){
+        
+        console.log('fetched homes') //a nested collection with items
+        
+        var indexView = new LoanItToMe.Views.ItemsIndex({ 
+          itemsCollection: items,
+          homesCollection: homes,
+          category_id: id
+        });
+
+        _this.$rootEl.html(indexView.render().$el);
+
+      }).fail(function(){
+        console.log('did not fetch homes');
+      });
+
     }).fail(function(model, xhr, options) {
-      console.log("not for real")
+      console.log("did not fetch items")
     });
   }
 

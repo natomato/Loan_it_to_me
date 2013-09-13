@@ -1,4 +1,5 @@
-<div class="container">
+<!-- /items/:id  Item Detail Page -->
+<div class="item-detail">
 
   <div class="hero">
     <div class="photo">
@@ -29,7 +30,7 @@
             </div>
           </div>
         <% end %>
-      </div>
+      </div> <!-- /.tab-pane -->
 
       <div class="tab-pane" id="calendar">
         <input type="date">
@@ -43,10 +44,10 @@
       </div>
     </div> <!-- /.tab content -->
   </div> <!-- /.tabbable -->
-</div>
+</div> <!-- /.container -->
 
 <script type="text/javascript">
 $(document).ready(function() {
-  new LoanItToMe.Views.ItemDetailPage({ el: $('.container') })
+  new LoanItToMe.Views.ItemDetailPage({ el: $('.item-detail') })
 });
 </script>

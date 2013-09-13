@@ -1,15 +1,17 @@
-<img src="/assets/loanittome_logo.png" alt="">
-<div class="container">
+<!-- Landing Page  -->
+<div class="logo span8">
+  <img class="" src="/assets/loanittome_logo.png" alt="">
+</div>
+<div class="main-content">
   <% @categories.each do |category| %>
   <div class="category-item span4 offset4 text-center" data-category="<%= category.id %>">
-    <a href="#/categories/<%= category.id %>"><%= category.name %></a>
+    <li class="well well-large"><%= link_to category.name, category_url(category) %></li>
   </div>
   <% end %>
 </div>
-
-<script id="category-index-page">
+<script>
   $(document).ready(function() {
-    var options = { $rootEl: $('.container') };
+    var options = { $rootEl: $('.main-content') };
     LoanItToMe.initialize(options);
   });
 </script>

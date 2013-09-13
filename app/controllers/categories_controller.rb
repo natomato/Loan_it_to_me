@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
 
-    render :index
+    render :layout => "landing_page"
   end
 
   def create
@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
     
     # render :json => "index.json.rabl"    
     respond_to do |format|
-      # format.html
+      format.html
       format.json { render(:file => '../views/items/index.json.rabl') }
     end
   end

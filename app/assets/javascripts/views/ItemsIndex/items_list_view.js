@@ -9,5 +9,7 @@ LoanItToMe.Views.ItemsList = Support.CompositeView.extend({
       var itemDetail = new LoanItToMe.Views.ItemDetail({ model: item });
       _this.$el.append(itemDetail.render().$el);
     });
+
+    return this;
   }
 })

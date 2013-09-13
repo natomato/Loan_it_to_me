@@ -3,6 +3,16 @@ class HomesController < ApplicationController
   #require current user for new, show, create, and destroy
   before_filter :require_login
 
+  def index
+    @cat_id = params[:category_id]
+    @homes = Home.by_category(@cat_id)
+
+    respond_to do |format|
+      # format.html
+      format.json { render [:handlers] => :rabl }
+    end
+  end
+
   def create
 
     pos = get_lat_lng(params[:home][:address])

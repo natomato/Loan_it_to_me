@@ -5,7 +5,8 @@ LoanItToMe.Views.ItemDetail = Support.CompositeView.extend({
   template: JST['items/detail'],
 
   events: {
-    "hover .item" : "highlight"
+    "mouseover .item" : "highlight",
+    "mouseout  .item" : "highlight"
   },
 
   //TODO move rating to a sub template
@@ -26,11 +27,11 @@ LoanItToMe.Views.ItemDetail = Support.CompositeView.extend({
     return this;
   },
 
-  highlight: function() {
+  highlight: function(event) {
     
-    console.log('highlight!')
+    console.log('highlight! or notHighlight!')
 
-    $(this.currentTarget).toggleClass("highlight");
+    $(event.currentTarget).toggleClass("highlight");
   }
 
 });
