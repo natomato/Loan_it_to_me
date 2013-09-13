@@ -7,7 +7,8 @@
     "click button.list" : "renderList",
     "click button.photo" : "renderPhotos",
     "click button.map" : "renderMap",
-    "click .item" : "renderDetail"
+    "click .item" : "renderDetail",
+    "keyup .view-options": "search"
   },
 
   initialize: function(options) {
@@ -126,6 +127,10 @@
     //then attach the result into the current view with
     //this.$('.view-options').append(viewSelect.render().$el)
     viewSelect.render();
+  },
+
+  search: function() {
+    console.log('key up');
   },
 
   swap: function(newView) {
