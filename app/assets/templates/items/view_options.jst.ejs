@@ -1,12 +1,14 @@
 <!-- Search Bar and View Options -->
-<form class="search form-search">
-<input type="text" name="query" id="query">
-<input type="date" name="rental[start_date]" placeholder="From">
-<input type="date" name="rental[end_date]" placeholder="To">
-<button type="button" class="search">Search</button>
-</form>
-<div class="views">
-<button type="button" class="list">List</button>
-<button type="button" class="photo">Photo</button>
-<button type="button" class="map">Map</button>
+<div class="row">
+  <form class="search navbar-form pull-left btn-group">
+    <input type="text" name="query" id="query">
+    <input type="date" name="rental[start_date]" placeholder="From">
+    <input type="date" name="rental[end_date]" placeholder="To">
+    <button type="button" class="search btn">Search</button>
+  </form>
+  <div class="btn-group views">
+  <button type="button" class="btn list">List</button>
+  <button type="button" class="btn photo">Photo</button>
+  <button type="button" class="btn map">Map</button>
+  </div>
 </div>

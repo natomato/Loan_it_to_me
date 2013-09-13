@@ -3,10 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .view-options {
-  overflow: auto;
 
   .views {
     float: right;
+  }
+
+  .search {
+    button {
+      margin-top: 0.25em;
+    }
   }
 }
 
@@ -30,12 +35,48 @@
 }
 
 .results {
-  .photo {
-    display: inline-block;
-    float: left;
-    height: 10em;
+  
+  .thumbnail {
+    height: 18em;
     width: 15em;
-    // padding: 0em, 3em;
+    display: inline-block;
+    padding-bottom: 1em;
+
+    .photo {
+      text-align: center;
+      height: 12em;
+      width: 15em;
+    }
+
+    .caption {
+      height: 5em;
+    }
+
+    .rating {
+      display: inline-block;
+    }
+
+  }
+  
+  .item-list {
+    img {
+      float: left;
+      display: inline;
+      margin-right: 2em;
+    }
+
+    .price {
+      float: right;
+    }
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  .caption {
+    height: 2em;
+    width: 15em;
   }
 
  .name {

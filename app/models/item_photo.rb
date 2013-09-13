@@ -5,8 +5,8 @@ class ItemPhoto < ActiveRecord::Base
   belongs_to :item
 
   has_attached_file :photo, :styles => {
-    :big => "420x420>",
-    :medium => "160x160>",
+    :big => "600x400>",
+    :medium => "300x200>",
     :small => "80x80#"
   }
 

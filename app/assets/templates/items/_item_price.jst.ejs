@@ -1,0 +1,7 @@
+<div class="price">
+  <% if( +item.get('price') > 0 ) { %>
+    <%= item.escape( 'price' ) %>
+  <% } else { %>
+    <%= 'Free' %>
+  <% }; %>
+</div>
