@@ -1,4 +1,4 @@
-  LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
+LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
    
   className: "index",
   template: JST['items/index'],

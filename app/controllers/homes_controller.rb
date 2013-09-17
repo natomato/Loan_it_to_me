@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   include HomesHelper
-  #require current user for new, show, create, and destroy
+  #TODO: prevent current user from editing someone elses home
   before_filter :require_login, except: [:index]
 
   def index
@@ -40,12 +40,22 @@ class HomesController < ApplicationController
   end
 
   def show
-    current_user
-    @home = Home.find(params[:id])
-    @home_rentals = @home.all_rentals #TODO: this variable is here to make explicit the methods im using
-    @item = Item.new              #TODO: remove the new item subform to a new page and delete this
-    @categories = Category.all    #TODO: remove the new item subform to a new page and delete this
+    if current_user.home #&& current_user.home.id == params[:id]
+      @home = current_user.home
+      @inventory = @home.inventory() #this is only ivar i need
+      # TODO: join the item_photos table to reduce DB queries
+      @items = @home.items
 
-    render :show
+      # @home_rentals = @home.all_rentals #TODO: this variable is here to make explicit the methods im using
+      # @item = Item.new              #TODO: remove the new item subform to a new page and delete this
+      # @categories = Category.all    #TODO: remove the new item subform to a new page and delete this
+      respond_to do |format|
+        format.html
+        format.json { render :json => @inventory }
+      end 
+    else
+      #flash error, you do not have permission to access this home
+      redirect_to new_home_url
+    end
   end
 end

@@ -8,7 +8,7 @@ class Rental < ActiveRecord::Base
   scope :future, -> { where("start_date > ?", DateTime.now) }
   scope :past, -> { where("end_date < ?", DateTime.now) } 
   scope :approved, -> { where(status: 'approved') }
-  belongs_to :user
+  belongs_to :user #the user making the request
   belongs_to :item
   has_one :review, class_name: "RentalReview", foreign_key: :rental_id
 

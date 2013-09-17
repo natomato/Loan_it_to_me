@@ -1,0 +1,25 @@
+.item-detail {
+
+  .hero {
+
+    .photo {
+      display: inline-block;
+      float: left;
+      margin: 2em;
+    }
+    .description {
+      padding-top: 3em;
+    }
+
+    .name {
+      font-size: 1.3em;
+    }
+
+    .value {
+      padding-top: 2em;
+      font-size: 3em;
+      float: right;
+      color: blue;
+    }
+  }
+}

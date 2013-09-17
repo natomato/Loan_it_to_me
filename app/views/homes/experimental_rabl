@@ -1,0 +1,44 @@
+###### homes_controller.rb
+  def show
+    if current_user.home #&& current_user.home.id == params[:id]
+      @home = current_user.home
+      # TODO: join the item_photos table to reduce DB queries
+      @items = @home.items
+
+      # @home_rentals = @home.all_rentals #TODO: this variable is here to make explicit the methods im using
+      # @item = Item.new              #TODO: remove the new item subform to a new page and delete this
+      # @categories = Category.all    #TODO: remove the new item subform to a new page and delete this
+      respond_to do |format|
+        format.html
+        format.json { render [:handlers] => :rabl }
+      end 
+    else
+      #flash error, you do not have permission to access this home
+      redirect_to new_home_url
+    end
+  end
+
+
+###### "homes/show"
+object @home
+attributes *Home.column_names
+child @items do
+  extends "homes/_items"
+end
+
+###### "homes/_items"
+collection @items
+attributes *Item.column_names
+node :avg_rating do |item|
+  item.average_rating
+end
+node :photo_small do |item|
+  item.main_photo.photo.url(:small)
+end
+node :rentals do |item|
+  item.pending_requests
+end
+
+###### "homes/_requests" - this part broken, returns nothing
+object user
+attributes *User.column_names

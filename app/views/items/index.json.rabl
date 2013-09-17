@@ -21,4 +21,3 @@ child :home do |home|
     home.items.pluck(:id)
   end
 end
-  

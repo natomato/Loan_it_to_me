@@ -1,14 +1,18 @@
 <!-- /items/:id  Item Detail Page -->
 <div class="item-detail">
 
-  <div class="hero">
-    <div class="photo">
+  <div class="hero row">
+    <div class="photo span3">
       <%= image_tag @item.main_photo.photo.url(:big) %>
     </div>
-    <div class="name"><%= @item.name %></div>
-    <div class="description"><%= @item.description %></div>
-    <div class="price"><%= @item.price %></div>
-    <div class="rating"><%= @item.avg_rating %></div>
+    <div class="description span3">
+      <h1 class="name"><%= @item.name %></h1>
+      <p><%= @item.description %></p>
+    </div>
+    <div class="value span3">
+      <p><%= @item.price > 0 ? @item.price : "Free" %></p>
+      <p><%= @item.avg_rating %></p>
+    </div>
   </div>
 
 

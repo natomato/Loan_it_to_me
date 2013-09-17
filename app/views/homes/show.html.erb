@@ -1,6 +1,6 @@
 <!-- /homes/:id  Manage Inventory Page -->
 <div class="inventory">
-  <% @home.items.sort.each do |item| %>
+  <% @items.sort.each do |item| %>
     <div class="item row">
       <div class="item-name"><%= item.name %></div>
       <div class="photo"><%= image_tag item.main_photo.photo.url(:small) %></div>
@@ -35,7 +35,6 @@
   <input type="submit" value="update">
 </form>
 
-<!-- TODO: Risks code injection, move to a backbone AJAX request -->
 <script id="bootstrapped-rentals">
 $(document).ready(function() {
     var id = <%= @home.id %>

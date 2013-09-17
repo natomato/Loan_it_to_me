@@ -4,7 +4,7 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
     "": "categoriesIndex",
     "categories" : "categoriesIndex",
     "categories/:id": "itemsIndex",
-    "homes/:id": "inventory",
+    "homes/:id": "homeShow",
     //"items/:id": "itemsDetail"
   },
 
@@ -20,11 +20,19 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
     var categoriesIndex = new LoanItToMe.Views.CategoryIndex({ el: this.$rootEl });
   },
 
-  inventory: function(id) {
-    console.log('mainRouter - inventory')
+  homeShow: function(id) {
+    console.log('mainRouter - homeShow');
+    var _this = this;
     //the homes_show page is bootstrapped with rental request data passed into router as JSON
-    var rentals = new LoanItToMe.Collections.Rentals(this.collection);
-    var inventoryView = new LoanItToMe.Views.Inventory({ collection: this.collection });
+    // var rentals = new LoanItToMe.Collections.Rentals(this.collection);
+    // var inventoryView = new LoanItToMe.Views.Inventory({ collection: this.collection });
+
+    var home = new LoanItToMe.Models.Home({ id: id });
+
+    home.fetch().done(function() {
+        var homeShow = new LoanItToMe.Views.HomeShow({ collection: home.get('items') });
+        //_this.$rootEl.html(homeShow.render().$el);
+    })
 
     //nothing to render, rails served up the form completely
     // this.$rootEl.html(inventoryView.render().$el);
@@ -63,7 +71,7 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
       console.log("fetched items") //a nested collection with homes
       
       var homes = new LoanItToMe.Collections.Homes();
-      homes.fetch({data: { category_id: id }}).done(function(){
+      homes.fetch({data: { category_id: id }}).done(function() {
         
         console.log('fetched homes') //a nested collection with items
         
@@ -75,7 +83,7 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
 
         _this.$rootEl.html(indexView.render().$el);
 
-      }).fail(function(){
+      }).fail(function(model, xhr, options) {
         console.log('did not fetch homes');
       });
 
