@@ -15,7 +15,7 @@
 //= require twitter/bootstrap
 //= require underscore
 //= require backbone
-//
+//= require dateFormat
 // I only need the swapping router and composite view
 //= require backbone-support
 //

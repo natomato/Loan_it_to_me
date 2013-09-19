@@ -40,18 +40,19 @@ class HomesController < ApplicationController
   end
 
   def show
+    # TODO: simplify!
     if current_user.home #&& current_user.home.id == params[:id]
       @home = current_user.home
-      @inventory = @home.inventory() #this is only ivar i need
-      # TODO: join the item_photos table to reduce DB queries
       @items = @home.items
-
+      @home_items_requests = @home.items_with_requests
+      # TODO: join the item_photos table to reduce DB queries
+      
       # @home_rentals = @home.all_rentals #TODO: this variable is here to make explicit the methods im using
       # @item = Item.new              #TODO: remove the new item subform to a new page and delete this
       # @categories = Category.all    #TODO: remove the new item subform to a new page and delete this
       respond_to do |format|
         format.html
-        format.json { render :json => @inventory }
+        format.json { render :json => @home_items_requests }
       end 
     else
       #flash error, you do not have permission to access this home

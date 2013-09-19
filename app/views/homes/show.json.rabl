@@ -1,1 +1,1 @@
-@inventory.to_json
+@home_items_requests.to_json

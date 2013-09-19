@@ -1,0 +1,4 @@
+(function() {
+  this.JST || (this.JST = {});
+  this.JST["items/view_options"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- Search Bar and View Options -->\n<div class="row">\n  <form class="search navbar-form pull-left btn-group">\n    <input type="text" name="query" id="query">\n    <input type="date" name="rental[start_date]" placeholder="From">\n    <input type="date" name="rental[end_date]" placeholder="To">\n    <button type="button" class="search btn">Search</button>\n  </form>\n  <div class="btn-group views">\n  <button type="button" class="btn list">List</button>\n  <button type="button" class="btn photo">Photo</button>\n  <button type="button" class="btn map">Map</button>\n  </div>\n</div>\n');}return __p.join('');};
+}).call(this);

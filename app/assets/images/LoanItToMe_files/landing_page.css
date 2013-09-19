@@ -1,0 +1,11 @@
+/* line 5, ../../app/assets/stylesheets/landing_page.css.scss */
+.logo {
+  margin-bottom: 2em;
+  margin-left: 25%;
+}
+
+/* line 14, ../../app/assets/stylesheets/landing_page.css.scss */
+.category-item li {
+  list-style-type: none;
+  margin-bottom: 1em;
+}

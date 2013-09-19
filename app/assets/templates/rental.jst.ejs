@@ -1,13 +1,5 @@
-<div class="item-list">
-  <hr>
-  <div class="price"><%= JST['items/_item_price']({item: item}) %></div>
-  <img src="<%= item.escape( 'photo_small') %>" alt="">
-  <ul class="rentals"></ul>
-  <div class="rating">
-    <span class="star" data-id="1">☆</span>
-    <span class="star" data-id="2">☆</span>
-    <span class="star" data-id="3">☆</span>
-    <span class="star" data-id="4">☆</span>
-    <span class="star" data-id="5">☆</span>
-  </div>
+<div class="pending-request well">
+<div class="span1"><%=  rental.get('start_date').format('rentalTime') %></div>
+<div class="span1"><%= rental.get('end_date').format('rentalTime') %></div>
+<button class="status btn">Accept</button>
 </div>

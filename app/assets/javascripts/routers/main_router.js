@@ -4,6 +4,7 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
     "": "categoriesIndex",
     "categories" : "categoriesIndex",
     "categories/:id": "itemsIndex",
+    //homes/:id is bootstrapped with data, the view is instantiated on the webpage
     "homes/:id": "homeShow",
     //"items/:id": "itemsDetail"
   },
@@ -12,6 +13,7 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
     this.collection = options.collection;
+    this.bootstrap = options.bootstrap;
   },
 
   categoriesIndex: function() {
@@ -22,20 +24,23 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
 
   homeShow: function(id) {
     console.log('mainRouter - homeShow');
-    var _this = this;
+
+    // var _this = this;
     //the homes_show page is bootstrapped with rental request data passed into router as JSON
-    // var rentals = new LoanItToMe.Collections.Rentals(this.collection);
-    // var inventoryView = new LoanItToMe.Views.Inventory({ collection: this.collection });
+    var home = new LoanItToMe.Models.Home(this.bootstrap, {parse: true} );
 
-    var home = new LoanItToMe.Models.Home({ id: id });
-
-    home.fetch().done(function() {
-        var homeShow = new LoanItToMe.Views.HomeShow({ collection: home.get('items') });
-        //_this.$rootEl.html(homeShow.render().$el);
-    })
-
-    //nothing to render, rails served up the form completely
-    // this.$rootEl.html(inventoryView.render().$el);
+    // var homeShow = new LoanItToMe.Views.HomeShow({ model: home });
+    var itemRentals = new LoanItToMe.Views.ItemRentals({ collection: home.get('items') });
+    // home.fetch().done(function() {
+        
+    //     var homeShow = new LoanItToMe.Views.HomeShow({ collection: home.get('items') });
+        
+    //     var itemPhoto = new LoanItToMe.Models.ItemPhoto()
+    //     itemPhoto
+    //     //_this.$rootEl.html(homeShow.render().$el);
+    // })
+    itemRentals.render();
+    // this.$rootEl.html(homeShow.render().$el);
   },
 
   itemsDetail: function(id) {

@@ -17,21 +17,19 @@ class Home < ActiveRecord::Base
 
   #return a home with array of items 
   #each with array of pending requests with a username
-  def inventory()
+  def items_with_requests()
     self.as_json({
       include: {
         :items => {
-          include: :main_photo
-          
-          # include: {
-          #   :pending_requests => {
-          #     include: {
-          #       :user => {
-          #         :only => [:username, :id]
-          #       }
-          #     }
-          #   }
-          # }
+          include: {
+            :pending_requests => {
+              include: {
+                :user => {
+                  :only => [:username, :id]
+                }
+              }
+            }
+          }
         }
       }
     })

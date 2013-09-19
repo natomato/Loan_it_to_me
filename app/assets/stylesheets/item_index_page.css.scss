@@ -94,8 +94,28 @@
 }
 
 .inventory {
+  
+  .description {
+    text-align: center;
+    font-size: 1.5em;
+  }
+
   .photo {
-    float: left;
+    margin: 1em;
+  }
+
+  .price {
+    
+  }
+
+
+  .pending-request {
+    height: 3em;
+    padding: 0.5em;
+
+    button {
+      margin-left: 2em;
+    }
   }
 }
 

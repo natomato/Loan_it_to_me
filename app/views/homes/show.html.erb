@@ -1,18 +1,14 @@
 <!-- /homes/:id  Manage Inventory Page -->
-<div class="inventory">
+<div class="inventory container">
   <% @items.sort.each do |item| %>
-    <div class="item row">
-      <div class="item-name"><%= item.name %></div>
-      <div class="photo"><%= image_tag item.main_photo.photo.url(:small) %></div>
-      <% item.pending_requests.each do |request| %>
-        <li class="request">
-          <span class="button"><input type="radio" name="request_id" value="<%= request.id %>"></span>
-          <%= request.user.username %>
-          <span class="start"><%= request.start_date.strftime('%A, %b %d: %l:%M %p') %></span>  
-          <span class="end"><%= request.end_date.strftime('%A, %b %d: %l:%M %p') %></span> 
-        </li>
-      <% end %>
-    </div>  
+    <div class="item well row">
+      <div class="description span2">
+        <div class="name"><%= item.name %></div>
+        <div class="photo"><%= image_tag item.main_photo.photo.url(:small) %></div>
+        <div class="price"><%= item.price == 0 ? "Free" : "$" + item.price * 1.00 %></div>
+      </div>
+      <ul class="request span4" id="<%= item.id %>"></ul>
+    </div>
   <% end %>
 </div>
 
@@ -35,16 +31,17 @@
   <input type="submit" value="update">
 </form>
 
+<!-- TODO: put bootstrapped data here -->
 <script id="bootstrapped-rentals">
 $(document).ready(function() {
-    var id = <%= @home.id %>
-    var rentals = <%= @home_rentals.to_json.html_safe %>;
+    var homeData = <%= j @home_items_requests.to_json.html_safe %>;
+    //var home = new LoanItToMe.Models.Home(homeData, {parse: true} );
     var options = { 
-      $rootEl: $('.inventory'),
-      collection: rentals
+      $rootEl: $('.requests'),
+      bootstrap: homeData
     };
     LoanItToMe.initialize(options);
   });
 </script>
 
-
+                                       n 

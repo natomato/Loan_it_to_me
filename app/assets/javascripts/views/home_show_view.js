@@ -1,34 +1,30 @@
 LoanItToMe.Views.HomeShow = Support.CompositeView.extend({
 
-  tagName: "ul",
+  tagName: "li",
   template: JST["home"],
 
   events: {
-    "click button.confirm": s
+    //"click button.confirm":
   },
 
   render: function(){
-    var _this = this;
+    // var _this = this;
 
-    this.collection.each(function(item) {
+    // this.collection.each(function(item) {
 
-      // some items do not have rental requests
-      var itemRentals = new LoanItToMe.Views.ItemRentals({
+    //   // some items do not have rental requests
+    //   var itemRentals = new LoanItToMe.Views.ItemRentals({
         
-        collection: function(){
-          
-          var rentals = item.get('rentals');
+    //     collection: function(){
+    //       var rentals = item.get('pending_requests');
+    //     },
+        
+    //     model: item
 
-
-
-        },
-
-        model: item
-
-      });
+    //   });
       
-      _this.$el.append(itemRentals.render().$el);
-    });
+    //   _this.$el.append(itemRentals.render().$el);
+    // });
     return this;
   }
 });
