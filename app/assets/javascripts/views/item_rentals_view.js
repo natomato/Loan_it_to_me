@@ -3,40 +3,41 @@ LoanItToMe.Views.ItemRentals = Support.CompositeView.extend({
   tagName: 'li',
 
   // template: JST['rentals'],
-
-  events: function() {
-    //listen for click
+  initialize: function() {
+    // this.listenTo(this.collection, 'sync');
+    //this.collection == items
   },
 
-  saveItem: function() {
-    //collection reset
+  events: {
+    //listen for model change, then rerender/refetch the all items and rentals
   },
 
   render: function() {
+
     var _this = this;
     console.log('rendering the item rental requests');
+
     this.collection.each(function(item) {
 
       var rentals = item.get('pending_requests');
-      if (rentals.length === 0){ return };
+      
+      if (rentals.length === 0){ return }; //this works :)
+      
+      //add item_id attr to use in the url function: /items/:id/rentals/
+      rentals.item_id = item.id;      
+      console.log('item rentals for item' + item.id)
 
-      rentals.each(function(rental) {
-
-        var rentalDetail = new LoanItToMe.Views.Rental({ 
-          el: $( '.request#' + item.get('id') ),
-          model: rental
-        });
-
-        rentalDetail.render();
-
+      var rentalsIndex = new LoanItToMe.Views.Rentals({ 
+        el: $( '.request#' + item.get('id') ), //only grabs the matching items <ul></ul>
+        collection: rentals,
       });
 
-      //item's photo already rendered by server, append to ul.requests
-      // _this.$el.append(renderedContent);
+      //this subview renders itself directly onto the DOM
+      rentalsIndex.render();
     });
 
-    //var renderedContent = template({ item: this.model, rentals: this.collection });
-    //nothing to return, rendered directly onto the main page
+    //nothing to return, subview rendered itself directly onto page
+    //TODO: test deleting the return 
     return this;
   }
 

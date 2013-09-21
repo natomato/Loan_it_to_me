@@ -1,5 +1,11 @@
 class RentalsController < ApplicationController
   def index
+    @rentals = Item.find_by_id(params[:item_id]).rentals
+
+    respond_to do |format|
+      format.html
+      format.json { render [:handlers] => :rabl }
+    end
   end
 
   def create
@@ -16,6 +22,21 @@ class RentalsController < ApplicationController
   end
 
   def update
+    @rental = Rental.find_by_id(params[:id])
+
+    if params[:status] == "approved"
+      @rental.approve!
+      p ['rental ------------>', @rental]
+      render :json => @rental
+    elsif params[:status] == "undo"
+      @rental.undo_approve!
+      render :json => @rental
+    else
+      #flash error message
+      p ['rental ------------>', @rental]
+      p ['rental errors------>', @rental.errors]
+      render :json => @rental.errors, :status => :unprocessable_entity
+    end
   end
 
   def destroy

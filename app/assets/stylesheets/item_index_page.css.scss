@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$blue: #3D4AE8;
+
+
 .view-options {
 
   .views {
@@ -16,7 +19,7 @@
 }
 
 .starred {
-  color: blue;
+  color: $blue;
   // ★
 }
 
@@ -42,6 +45,10 @@
     display: inline-block;
     margin-bottom: 1em;
 
+    a {
+      // TODO: dont underline
+    }
+
     .photo {
       margin-top: 0.5em;
       text-align: center;
@@ -51,6 +58,10 @@
 
     .caption {
       height: 5em;
+    }
+
+    .name {
+      color: $blue;
     }
 
     .rating {
@@ -104,15 +115,31 @@
     margin: 1em;
   }
 
-  .price {
-    
+  .thumbnail{
+    text-align: center;
+  }
+
+  .new-item {
+    //TODO: simplify css to remove underline
+    // a:link {text-decoration:none;}
+    // a:visited {text-decoration:none;}
+    // a:hover {text-decoration:none;}
+    // a:active {text-decoration:none;}
+
+    p {
+      padding: 15% 10% 15% 10%;
+    }
   }
 
 
   .pending-request {
     height: 3em;
     padding: 0.5em;
-
+    
+    li {
+      text-decoration: none;
+    } 
+    
     button {
       margin-left: 2em;
     }

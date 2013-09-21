@@ -24,7 +24,7 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
 
   homeShow: function(id) {
     console.log('mainRouter - homeShow');
-    debugger
+
     var _this = this;
     //the homes_show page is bootstrapped with rental request data passed into router as JSON
     // var rentals = new LoanItToMe.Collections.Rentals(this.collection);

@@ -39,14 +39,17 @@ class Rental < ActiveRecord::Base
     end
   end
 
+  # TODO: Fix this.
+  # undo_approve will incorrectly change a bridged request to pending
+  # example: a(1, 3) p(2, 5) ua(4, 6)
   def undo_approve!
     #reset all overlapping denied requests to pending
     self.status = "pending"
     self.save!
 
     self.contemporaries("denied").each do |rental|
-      rental.status = "pending"
-      rental.save!
+      rental.status = "pending"     
+      rental.save! #transaction rollback, fails available? test
     end
   end
 
@@ -58,12 +61,15 @@ class Rental < ActiveRecord::Base
       return errors[:item_id] << "Couldn't find item #{self.item_id}" 
     end
     
-    if self.contemporaries("approved").empty?
+    conflicts = self.contemporaries("approved")
+
+    if conflicts.empty?
       return true
     else
+      conflict = conflicts.first
       return errors[:start_date] << ": This #{self.item.name} is already being rented " + 
-                                    "between #{self.start_date.strftime("%m/%d/%y")} " +
-                                    "and #{self.end_date.strftime("%m/%d/%y")}"
+                                    "during #{conflict.start_date.strftime("%m/%d/%y")} " +
+                                    "and #{conflict.end_date.strftime("%m/%d/%y")}"
     end
 
   end

@@ -1,5 +1,7 @@
 <div class="pending-request well">
-<div class="span1"><%=  rental.get('start_date').format('rentalTime') %></div>
-<div class="span1"><%= rental.get('end_date').format('rentalTime') %></div>
-<button class="status btn">Accept</button>
+  <div class="user span1"><%= user.escape('username') %></div>
+  <div class="status span1"><%= rental.get('status') %></div>
+  <div class="span1"><%=  rental.get('start_date').format('rentalTime') %></div>
+  <div class="span1"><%= rental.get('end_date').format('rentalTime') %></div>
+  <button class="accept btn" data-id="<%= rental.id %>">Accept</button>
 </div>

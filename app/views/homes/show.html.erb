@@ -1,18 +1,41 @@
-<!-- /homes/:id  Manage Inventory Page -->
+<!-- /homes/:id  Inventory Page -->
 <div class="inventory container">
-  <% @items.sort.each do |item| %>
-    <div class="item well row">
-      <div class="description span2">
-        <div class="name"><%= item.name %></div>
-        <div class="photo"><%= image_tag item.main_photo.photo.url(:small) %></div>
-        <div class="price"><%= item.price == 0 ? "Free" : "$" + item.price * 1.00 %></div>
+  <div class="rentals">
+    <% @items.sort.each do |item| %>
+      <% next if item.rentals.empty? %>
+      <div class="item well row">
+        <div class="description span2">
+          <div class="name"><%= item.name %></div>
+          <div class="photo"><%= image_tag item.main_photo.photo.url(:small) %></div>
+          <div class="price"><%= item.price == 0 ? "Free" : "$" + item.price %></div>
+        </div>
+        <!-- Backbone Rental Requests -->
+        <ul class="request span8" id="<%= item.id %>"></ul>
       </div>
-      <ul class="request span4" id="<%= item.id %>"></ul>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <div class="item-index">
+    <section class="all-items">
+      <h1>Edit an Item</h1>
+        <% @items.sort.each do |item| %>
+        <div class="thumbnail well row span2">
+          <div class="name"><%= item.name %></div>
+          <div class="photo"><%= image_tag item.main_photo.photo.url(:small) %></div>
+          <div class="price"><%= item.price == 0 ? "Free" : "$" + item.price %></div>
+          <div class="category"><%= item.category.name %></div>
+        </div>
+      <% end %>
+        <div class="thumbnail well row span2">
+          <a class="new-item" href="<%= new_item_url %>">
+            <img src="https://s3-us-west-1.amazonaws.com/loanittome-dev/item_photos/photos/default/thumbnail-default-image.jpg" alt="" class="new-item">
+            <p>Add a New Item</p>
+          </a>
+        </div>
+    </section>
+  </div>
 </div>
 
-<%= link_to "Create a new Item", new_item_url %>
+
 
 <%= render partial: "homes/form" %>
 <br>
@@ -31,17 +54,14 @@
   <input type="submit" value="update">
 </form>
 
-<!-- TODO: put bootstrapped data here -->
 <script id="bootstrapped-rentals">
 $(document).ready(function() {
     var homeData = <%= j @home_items_requests.to_json.html_safe %>;
     //var home = new LoanItToMe.Models.Home(homeData, {parse: true} );
     var options = { 
       $rootEl: $('.requests'),
-      bootstrap: homeData
+      bootstrap: homeData,
     };
     LoanItToMe.initialize(options);
   });
 </script>
-
-                                       n 

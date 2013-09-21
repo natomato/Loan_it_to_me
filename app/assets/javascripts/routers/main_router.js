@@ -4,7 +4,6 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
     "": "categoriesIndex",
     "categories" : "categoriesIndex",
     "categories/:id": "itemsIndex",
-    //homes/:id is bootstrapped with data, the view is instantiated on the webpage
     "homes/:id": "homeShow",
     //"items/:id": "itemsDetail"
   },

@@ -1,6 +1,10 @@
 LoanItToMe.Collections.Rentals = Backbone.Collection.extend({
 
   model: LoanItToMe.Models.Rental,
-  url: "/rentals"
+  
+  //TODO: remove if not using. i override the url in the view
+  url: function() {
+    return 'items/' + this.item_id + '/rentals'
+  }
   
 })

@@ -16,6 +16,8 @@ It is designed to be a Single Page App.
 * ~~Display a thumbnail of the image~~
 * ~~New Item Form~~
 * Edit Item Form
-* Create 10 pics for Photo view
+* ~~Create 10 pics for Photo view~~
 * give paperclip a default_url
 * ~~Backbone pushState~~
+* Enable Search
+* Update Rental Requests with AJAX

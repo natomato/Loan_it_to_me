@@ -34,20 +34,6 @@ class Home < ActiveRecord::Base
       }
     })
 
-    # user.as_json(
-    #   include: { 
-    #     posts: {
-    #       include: { 
-    #         comments: {
-    #           only: :body } 
-    #         },
-    #         only: :title
-    #     } 
-    #   }
-    # )
-
-    # inventory = self.items
-
     # inventory.map do |item|
     #   requests = { requests: 
     #     item.pending_requests.map do |req|
@@ -59,27 +45,6 @@ class Home < ActiveRecord::Base
     # end
   end
 
-
-
-    
-  # Home.joins( items: [ :main_photo, { rentals: :user }])
-
-  # homes = Home.find_by_sql(<<-SQL)
-  #   SELECT *
-  #   FROM homes JOIN items
-  #   ON homes.id = items.home_id
-  #   WHERE items.category_id = #{cat_id}
-  #   GROUP_BY homes.id
-  # SQL
-
-  # homes.each do |home|
-  #   home.items #map.. cat_id
-  # end
-
-  # acts_as_gmappable :lat => 'latitude', :lng => 'longitude', :process_geocoding => :geocode?,
-  #                 :address => "address", :normalized_address => "address",
-  #                 :msg => "Sorry, not even Google could figure out where that is"
-
   # def geocode?
   #   (!address.blank? && (latitude.blank? || longitude.blank?)) || address_change?
   # end
@@ -88,9 +53,6 @@ class Home < ActiveRecord::Base
   #   false
   # end
 
-  # def gmaps4rails_address
-  #   self.address
-  # end
 
   #TODO: remove, I am using a RABL template instead and dont need this
   def all_rentals

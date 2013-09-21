@@ -12,18 +12,18 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   },
 
   initialize: function(options) {
-    this.currentView = new LoanItToMe.Views.ItemsList({ 
-      collection: this.options.itemsCollection
-    });
     this.$map = null;
     this.map = null;
     this.category_id = options.category_id;
     this.homesCollection = options.homesCollection;
     this.itemsCollection = options.itemsCollection;
+    this.currentView = options.view || new LoanItToMe.Views.ItemsList({ 
+      collection: this.options.itemsCollection
+    });
 
   },
 
-  //TODO: refactor? This view owns maps to reduce load everytime button clicked
+  //This parent owns the map to prevent reloading everytime map button clicked
   initializeMap: function() {
 
     console.log('initializing the map')
@@ -81,6 +81,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   renderList: function(event) {
     // event.preventDefault();
     var view = new LoanItToMe.Views.ItemsList({ collection: this.itemsCollection });
+    LoanItToMe.mainRouter.navigate("categories/" + this.category_id + "/list/");
     this.swap(view);
   },
 
@@ -106,6 +107,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
       map: this.map
     });
 
+    LoanItToMe.mainRouter.navigate("categories/" + this.category_id + "/map/");
     this.swap(view);
 
     //To prevent missing tiles, call resize on the map after rendering into main view
@@ -115,6 +117,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   renderPhotos: function() {
     var view = new LoanItToMe.Views.ItemsPhotos({ collection: this.itemsCollection })
     
+    LoanItToMe.mainRouter.navigate("categories/" + this.category_id + "/photos/");
     this.swap(view);
   },
 
@@ -131,6 +134,12 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
 
   search: function() {
     console.log('key up');
+
+    //get the query
+
+    //get results this.collection.search(query)
+
+    //re-render view with new collection
   },
 
   swap: function(newView) {
