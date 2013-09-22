@@ -4,6 +4,7 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
     "": "categoriesIndex",
     "categories" : "categoriesIndex",
     "categories/:id": "itemsIndex",
+    "categories/:id/:view" : "itemsIndex",
     "homes/:id": "homeShow",
     //"items/:id": "itemsDetail"
   },
@@ -64,36 +65,43 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
     // });
   },
 
-  itemsIndex: function(id) {
+  itemsIndex: function(id, view) {
 
     var items = new LoanItToMe.Collections.Items();
     var _this = this;
+    if (view) {
+      //TODO: get rid of this stupid if/else statement
+      //cant pass in the correct view unless i initialize the view
+      //can't initialize without repopulating the collections
+      //indexView.render(); 
+    } else {
+      //TODO: use $.when to chain these deferreds
+      items.fetch({data: {category_id: id}}).done(function() {
 
-    //TODO: use $.when to chain these deferreds
-    items.fetch({data: {category_id: id}}).done(function() {
+        console.log("fetched items") //a nested collection with homes
+        
+        var homes = new LoanItToMe.Collections.Homes();
+        homes.fetch({data: { category_id: id }}).done(function() {
+          
+          console.log('fetched homes') //a nested collection with items
+          
+          var indexView = new LoanItToMe.Views.ItemsIndex({ 
+            itemsCollection: items,
+            homesCollection: homes,
+            category_id: id
+          });
 
-      console.log("fetched items") //a nested collection with homes
-      
-      var homes = new LoanItToMe.Collections.Homes();
-      homes.fetch({data: { category_id: id }}).done(function() {
-        
-        console.log('fetched homes') //a nested collection with items
-        
-        var indexView = new LoanItToMe.Views.ItemsIndex({ 
-          itemsCollection: items,
-          homesCollection: homes,
-          category_id: id
+          _this.$rootEl.html(indexView.render().$el);
+
+        }).fail(function(model, xhr, options) {
+          console.log('did not fetch homes');
         });
 
-        _this.$rootEl.html(indexView.render().$el);
-
       }).fail(function(model, xhr, options) {
-        console.log('did not fetch homes');
+        console.log("did not fetch items")
       });
+    }
 
-    }).fail(function(model, xhr, options) {
-      console.log("did not fetch items")
-    });
   }
 
 });

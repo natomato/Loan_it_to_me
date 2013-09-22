@@ -12,15 +12,16 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   },
 
   initialize: function(options) {
-    this.$map = null;
-    this.map = null;
+    this.$map        = null;
+    this.map         = null;
     this.category_id = options.category_id;
-    this.homesCollection = options.homesCollection;
-    this.itemsCollection = options.itemsCollection;
-    this.currentView = options.view || new LoanItToMe.Views.ItemsList({ 
-      collection: this.options.itemsCollection
-    });
-
+    this.homes       = options.homesCollection || {};
+    this.items       = options.itemsCollection || {};
+    this.results     = options.resultsCollection || this.items;
+    this.currentView = options.view ||
+      new LoanItToMe.Views.ItemsList({ 
+        collection: this.options.itemsCollection
+      });
   },
 
   //This parent owns the map to prevent reloading everytime map button clicked
@@ -78,11 +79,12 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     this.$map = this.$('#map-canvas');
   },
 
-  renderList: function(event) {
-    // event.preventDefault();
-    var view = new LoanItToMe.Views.ItemsList({ collection: this.itemsCollection });
+  renderList: function() {
+
+    var view = new LoanItToMe.Views.ItemsList({ collection: this.results });
     LoanItToMe.mainRouter.navigate("categories/" + this.category_id + "/list/");
     this.swap(view);
+    
   },
 
   renderMap: function() {
@@ -102,7 +104,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     ///////////////////
     
     var view = new LoanItToMe.Views.HomesMap({ 
-      collection: this.homesCollection,
+      collection: this.homes,
       el: this.$map,
       map: this.map
     });
@@ -115,10 +117,11 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   },
 
   renderPhotos: function() {
-    var view = new LoanItToMe.Views.ItemsPhotos({ collection: this.itemsCollection })
+    var view = new LoanItToMe.Views.ItemsPhotos({ collection: this.results })
     
     LoanItToMe.mainRouter.navigate("categories/" + this.category_id + "/photos/");
     this.swap(view);
+    // return new LoanItToMe.Views.ItemsPhotos({ collection: this.items })
   },
 
   renderViewOptions: function() {
@@ -132,17 +135,20 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     viewSelect.render();
   },
 
-  search: function() {
-    console.log('key up');
+  search: _.debounce(function() {
 
-    //get the query
+    //TODO: changing views does not persist the results
 
-    //get results this.collection.search(query)
-
-    //re-render view with new collection
-  },
+    var results = this.items.search( $("#query").val() );
+    // this.currentView.collection = new LoanItToMe.Collections.Items(results);
+    this.results = new LoanItToMe.Collections.Items(results);
+    this.currentView.collection = this.results
+    this.currentView.$el.empty();
+    this.swap(this.currentView);
+  }, 300),
 
   swap: function(newView) {
+
     this.currentView.leave();
     this.currentView = newView;
 
@@ -152,7 +158,6 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
       this.$map.hide();
     }
 
-    //renderChildInto will call .empty() on the container
     this.renderChildInto(newView, this.$('.results'));
   }
 

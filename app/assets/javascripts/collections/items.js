@@ -5,22 +5,13 @@ LoanItToMe.Collections.Items = Backbone.Collection.extend({
 
   search: function(query) {
 
-    //test regex
-    regExp = RegExp(".*#{query.toLowerCase(){.*");
-
-    //can i user regexp with where(this.models, {name: regexp})
-    this.models.filter(function(item) {
+    var regExp = RegExp(".*" + query.toLowerCase() + ".*");
+    
+    var results = this.models.filter(function(item) {
       return item.get("name").match(regExp)
     });
-
+ 
+    return results;
   }
+
 })
-
-
-// filter = function (collection, key, regex) {
-//     return _.filter(collection, function(obj){ return obj[key].match(regex);});
-// };
-
-// var publishedBooks = books.filter(function(book) {
-//   return book.get("published") === true;
-// });
