@@ -45,7 +45,9 @@ LoanItToMe.Views.HomeMarker = Backbone.View.extend({
 
   renderSidebar: function(home) {
     console.log('clicked marker');
-    
+        debugger 
+    this.$('map-canvas').append(JST['map_items']());
+   
     // var renderedContent = this.template({ home: home });
     // home.items.each(function(item) {
     //   var itemView = new LoanItToMe.Views.ItemDetail({ model: item });

@@ -149,9 +149,9 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     console.log('swapped');
     this.currentView.leave();
     this.currentView = newView;
-    debugger
+
     if( newView.map ){
-      this.$map.show(); 
+      this.$map.show();
     } else {
       this.$map.hide();
     }
