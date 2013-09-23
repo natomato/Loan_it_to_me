@@ -1,23 +1,19 @@
-## Loan It To Me
+# Loan It To Me
 
-A simple app to rent tools from neighbors.
-It is designed to be a Single Page App.
+A simple app to rent tools from neighbors. The site interface was inspired by airbnb. I use backbone to smooth the transitions between different views and to provide instant search. I use Thoughtbot's excellent [backbone-support](https://github.com/thoughtbot/backbone-support) to unbind events and more cleanly change the views.
 
-### To Do
-* ~~Geocode an address~~
-* ~~New Home Form~~
-* Edit home form
-* ~~Map display markers for homes~~
-* display info window for tool at marker location
-* ~~Upload item image~~
-  * Enforce user is logged in
-  * Enforce user has a home
-* Upload several images for an item
-* ~~Display a thumbnail of the image~~
-* ~~New Item Form~~
-* Edit Item Form
-* ~~Create 10 pics for Photo view~~
-* give paperclip a default_url
-* ~~Backbone pushState~~
-* Enable Search
-* Update Rental Requests with AJAX
+
+##Demo Site
++ [Loan It To Me](www.loanittome.net)
++ Sample Data is in "Lawn and Garden"
+
+##Features
++ Instant Search
++ Google Map
+
+##Technologies Used:
++ Ruby on Rails
++ Backbone.js
++ Google Maps Javascript API v3
++ jQuery
+
