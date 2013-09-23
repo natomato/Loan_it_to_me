@@ -4,7 +4,7 @@ A simple app to rent tools from neighbors. The site interface was inspired by ai
 
 
 ##Demo Site
-+ [Loan It To Me](http://www.loanittome.net)
+<a href="http://www.loanittome.net/" target="_blank">Loan It To Me</a>
 + Sample Data is in "Lawn and Garden"
 
 ##Features
