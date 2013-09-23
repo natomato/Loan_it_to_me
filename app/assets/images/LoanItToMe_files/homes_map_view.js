@@ -2,9 +2,10 @@ LoanItToMe.Views.HomesMap = Support.CompositeView.extend({
 
   // this identifies a div sibling of the parent
   // on swap, it becomes a child and from then on its added and removed as normal.  
-  //id: 'map-canvas',
-  //el: $map
-  //collection: Homes, each home has an items collection as a property
+  // id: 'map-canvas',
+  // el: $map
+  // collection: Homes, each home has an items collection as a property
+
 
   initialize: function(options){
     this.map = options.map;
@@ -14,10 +15,6 @@ LoanItToMe.Views.HomesMap = Support.CompositeView.extend({
 
   },
 
-  events: {
-    'mouseover a': 'showInfoWindow',
-    'mouseout  a': 'hideInfoWindow'
-  },
 
   render: function(){
     var _this = this;
@@ -35,7 +32,6 @@ LoanItToMe.Views.HomesMap = Support.CompositeView.extend({
       })
     });
     
-
     // google.maps.event.addListener(this.map, 'click', function(event) {
     //   placeMarker(event.latLng);
     // });
@@ -47,7 +43,8 @@ LoanItToMe.Views.HomesMap = Support.CompositeView.extend({
     //   });
 
     //return this; //this is the map-canvas div
-  }
+  },
+
 
 })
 ;

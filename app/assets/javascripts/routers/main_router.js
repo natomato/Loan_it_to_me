@@ -59,7 +59,6 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
     //   //var owner   = new LoanItToMe.Model.User({ data.owner })
     //   var detailView = new LoanItToMe.Views.ItemDetailPage({ model: item });
     //   _this.$rootEl.html(detailView.render().$el);
-    //   debugger
     // }).fail(function() {
     //   console.log("itemDetail fetch failed");
     // });

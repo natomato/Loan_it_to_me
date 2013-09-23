@@ -27,7 +27,7 @@ LoanItToMe.Views.HomeMarker = Backbone.View.extend({
   },
 
   showInfoWindow: function() {
-    //debugger //this.marker undefined, this.model undefined
+    // //this.marker undefined, this.model undefined
     this.infoWindow.open(this.map, this.marker);
     this.infoWindow.setPosition(this.model.get('latitude'), this.model.get('longitude'));
   },

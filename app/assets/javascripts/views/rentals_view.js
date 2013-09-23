@@ -22,7 +22,7 @@ LoanItToMe.Views.Rentals = Support.CompositeView.extend({
       type: 'GET',
       dataType: 'json',
       success: function(responseData){
-        debugger
+        
         var pending = _.where(responseData, {status: "pending"})
         var rentals = new LoanItToMe.Collections.Rentals( pending, {parse: true} );
         _this.collection.reset( {silent: true} );

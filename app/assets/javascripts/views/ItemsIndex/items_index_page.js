@@ -1,5 +1,7 @@
 LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
-   
+  
+  //TODO: refactor this into a swapping router with separate views
+
   className: "index",
   template: JST['items/index'],
 
@@ -8,6 +10,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     "click button.photo" : "renderPhotos",
     "click button.map" : "renderMap",
     "click .item" : "renderDetail",
+    // "click #query": "search",
     "keyup .view-options": "search"
   },
 
@@ -56,7 +59,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     //must pass the constructor a DOM element, not jQuery
     this.map = new google.maps.Map(this.$map[0], mapOptions);
     this.map.fitBounds(bounds);
-
+    //  
   },
 
   render: function() {
@@ -82,9 +85,9 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   renderList: function() {
 
     var view = new LoanItToMe.Views.ItemsList({ collection: this.results });
-    LoanItToMe.mainRouter.navigate("categories/" + this.category_id + "/list/");
+    // LoanItToMe.mainRouter.navigate("categories/" + this.category_id + "/list/");
     this.swap(view);
-    
+
   },
 
   renderMap: function() {
@@ -109,7 +112,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
       map: this.map
     });
 
-    LoanItToMe.mainRouter.navigate("categories/" + this.category_id + "/map/");
+    // LoanItToMe.mainRouter.navigate("categories/" + this.category_id + "/map/");
     this.swap(view);
 
     //To prevent missing tiles, call resize on the map after rendering into main view
@@ -119,7 +122,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   renderPhotos: function() {
     var view = new LoanItToMe.Views.ItemsPhotos({ collection: this.results })
     
-    LoanItToMe.mainRouter.navigate("categories/" + this.category_id + "/photos/");
+    // LoanItToMe.mainRouter.navigate("categories/" + this.category_id + "/photos/");
     this.swap(view);
     // return new LoanItToMe.Views.ItemsPhotos({ collection: this.items })
   },
@@ -127,35 +130,32 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   renderViewOptions: function() {
 
     var viewSelect = new LoanItToMe.Views.ViewOptions({ 
-      el: this.$('.view-options') //$el does not work, the attribute is el, the $ is a jquery wrapper
+      el: this.$('.view-options')
     });
-    //alternate style would be, don't override $el, let the view make its own container
-    //then attach the result into the current view with
-    //this.$('.view-options').append(viewSelect.render().$el)
+
     viewSelect.render();
   },
 
   search: _.debounce(function() {
-
-    //TODO: changing views does not persist the results
-
+    // event.preventDefault();
     var results = this.items.search( $("#query").val() );
-    // this.currentView.collection = new LoanItToMe.Collections.Items(results);
     this.results = new LoanItToMe.Collections.Items(results);
     this.currentView.collection = this.results
     this.currentView.$el.empty();
     this.swap(this.currentView);
-  }, 300),
+  }, 100),
 
   swap: function(newView) {
-
+    console.log('swapped');
     this.currentView.leave();
     this.currentView = newView;
-
-    if( newView.id === 'map-canvas' ){
+    debugger
+    if( newView.map ){
       this.$map.show(); 
+      this.$('.search').empty();
     } else {
       this.$map.hide();
+      this.renderViewOptions();
     }
 
     this.renderChildInto(newView, this.$('.results'));

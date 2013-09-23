@@ -9,14 +9,12 @@ ActiveRecord::Base.transaction do
   User.create!(username: "guest4", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "guesttoken", bio: "Just visiting :)", home_id: 5)
   User.create!(username: "guest5", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "guesttoken", bio: "Just visiting :)", home_id: 6)
     
-  #giver's home
-  Home.create!(latitude: 37.7811812, longitude: -122.4116329)
-  #guest home
-  Home.create!(latitude: 37.7808, longitude: -122.4100)
-  #guest2 home
-  Home.create!(latitude: 37.7477, longitude: -122.4219)
-  Home.create!(latitude: 37.8257, longitude: -122.4309)
-  Home.create!(latitude: 37.8147, longitude: -122.4439)
+  
+  Home.create!(latitude: 37.7811812, longitude: -122.4116329) #giver's home
+  Home.create!(latitude: 37.7808, longitude: -122.4100)       #guest home
+  Home.create!(latitude: 37.7477, longitude: -122.4219)       #guest2 home
+  Home.create!(latitude: 37.82638, longitude: -122.422543)    #alcatraz
+  Home.create!(latitude: 37.7676, longitude: -122.435782)
   Home.create!(latitude: 37.7577, longitude: -122.4569)
   Home.create!(latitude: 37.7627, longitude: -122.4799)
   Home.create!(latitude: 37.7607, longitude: -122.4101)

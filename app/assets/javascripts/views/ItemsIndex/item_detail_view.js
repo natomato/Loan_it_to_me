@@ -20,7 +20,7 @@ LoanItToMe.Views.ItemDetail = Support.CompositeView.extend({
     this.$el.html(renderedContent);
     
     //render the stars
-    var rating = this.model.get("avg_rating");
+    var rating = Math.round( this.model.get("avg_rating") );
     this.$('.star[data-id=' + rating + ']').prevAll().html("★").addClass('starred');
     this.$('.star[data-id=' + rating + ']').html("★").addClass('starred');
 
