@@ -1,6 +1,6 @@
 <div class="price">
   <% if( +item.get('price') > 0 ) { %>
-    <%= item.escape( 'price' ) %>
+    <%= accounting.formatMoney(item.get('price')) %>
   <% } else { %>
     <%= 'Free' %>
   <% }; %>

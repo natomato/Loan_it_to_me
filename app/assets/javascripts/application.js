@@ -16,7 +16,7 @@
 //= require underscore
 //= require backbone
 //= require dateFormat
-// I only need the swapping router and composite view
+//= require accounting
 //= require backbone-support
 //
 //= require loan_it_to_me
