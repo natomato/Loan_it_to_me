@@ -1,19 +1,19 @@
 ActiveRecord::Base.transaction do
   
-  User.create!(username: "test", password_hash: "$2a$10$wtxQziDF.buPeAHJCHAkSOV1vRibyQ2eBGzWT7My3GoKJeW026JP2", selfie: "//test/pic/loc.png", session_token: "testtoken", bio: "im a test", home_id: 8)
-  User.create!(username: "moocher", password_hash: "$2a$10$JlRNa1UBoHPBJbQgEkuMcuNWjhA.x529wx//4Abv3LYjgodWUsb0a", session_token: "moochtoken", bio: "i like borrow things", home_id: 7)
-  User.create!(username: "giver", password_hash: "$2a$10$y1DwmLrCU2TBl5uaTUqoreexejaSNZr.QqrC2PHCEu/DpU9zOStA6", session_token: "givertoken", bio: "i like to loan things out", home_id: 1)
-  User.create!(username: "guest", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "guesttoken", bio: "Just visiting :)", home_id: 2)
-  User.create!(username: "guest2", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "guesttoken", bio: "Just visiting :)", home_id: 3)
-  User.create!(username: "guest3", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "guesttoken", bio: "Just visiting :)", home_id: 4)
-  User.create!(username: "guest4", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "guesttoken", bio: "Just visiting :)", home_id: 5)
-  User.create!(username: "guest5", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "guesttoken", bio: "Just visiting :)", home_id: 6)
+  User.create!(username: "Sam Sample", password_hash: "$2a$10$wtxQziDF.buPeAHJCHAkSOV1vRibyQ2eBGzWT7My3GoKJeW026JP2", selfie: "//test/pic/loc.png", session_token: "testtoken", bio: "im a test", home_id: 8)
+  User.create!(username: "Moochy Borrower", password_hash: "$2a$10$JlRNa1UBoHPBJbQgEkuMcuNWjhA.x529wx//4Abv3LYjgodWUsb0a", session_token: "moochtoken", bio: "i like borrow things", home_id: 7)
+  User.create!(username: "Givey Givrson", password_hash: "$2a$10$y1DwmLrCU2TBl5uaTUqoreexejaSNZr.QqrC2PHCEu/DpU9zOStA6", session_token: "givertoken", bio: "i like to loan things out", home_id: 1)
+  User.create!(username: "Mandi setz", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "guesttoken", bio: "Just visiting :)", home_id: 2)
+  User.create!(username: "Oddy Asmani", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "guesttoken", bio: "Just visiting :)", home_id: 3)
+  User.create!(username: "Kehuda Yatz", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "guesttoken", bio: "Just visiting :)", home_id: 4)
+  User.create!(username: "Mukihiro Yatsumoto", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "guesttoken", bio: "Just visiting :)", home_id: 5)
+  User.create!(username: "Pris Chine", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "guesttoken", bio: "Just visiting :)", home_id: 6)
     
   
-  Home.create!(latitude: 37.7811812, longitude: -122.4116329) #giver's home
-  Home.create!(latitude: 37.7808, longitude: -122.4100)       #guest home
-  Home.create!(latitude: 37.7477, longitude: -122.4219)       #guest2 home
-  Home.create!(latitude: 37.82638, longitude: -122.422543)    #alcatraz
+  Home.create!(latitude: 37.7811812, longitude: -122.4116329)
+  Home.create!(latitude: 37.7808, longitude: -122.4100)     
+  Home.create!(latitude: 37.7477, longitude: -122.4219)    
+  Home.create!(latitude: 37.82638, longitude: -122.422543)
   Home.create!(latitude: 37.7676, longitude: -122.435782)
   Home.create!(latitude: 37.7577, longitude: -122.4569)
   Home.create!(latitude: 37.7627, longitude: -122.4799)
@@ -27,25 +27,25 @@ ActiveRecord::Base.transaction do
   #guest's items
   Item.create!(home_id: 2, main_photo_id: 1, category_id: 1, name: "a rake", description: "asldf alsdf alsdf")
 
-  Item.create!(home_id: 1, main_photo_id: 6, category_id: 1, name: "chainsaw", price: 10.00, description: "im a green chainsaw")
+  Item.create!(home_id: 1, main_photo_id: 6, category_id: 1, name: "chainsaw", price: 6.50, description: "im a green chainsaw")
   Item.create!(home_id: 4, main_photo_id: 7, category_id: 1, name: "chain saw", price: 8.00, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
   Item.create!(home_id: 1, main_photo_id: 8, category_id: 1, name: "hedge trimmer", description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
-  Item.create!(home_id: 2, main_photo_id: 9, category_id: 1, name: "hedgetrimmer", price: 5.00, description: "Cuts bushes and stuff. Very sheek. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
-  Item.create!(home_id: 3, main_photo_id: 10, category_id: 1, name: "lawn mower", price: 10.00, description: "One wheel is broke, so you can only turn left. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
-  Item.create!(home_id: 4, main_photo_id: 11, category_id: 1, name: "lawn mower", price: 10.00, description: "Im yellow. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
+  Item.create!(home_id: 2, main_photo_id: 9, category_id: 1, name: "hedgetrimmer", price: 3.00, description: "Cuts bushes and stuff. Very sheek. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
+  Item.create!(home_id: 3, main_photo_id: 10, category_id: 1, name: "lawn mower", price: 7.50, description: "One wheel is broke, so you can only turn left. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
+  Item.create!(home_id: 4, main_photo_id: 11, category_id: 1, name: "lawn mower", price: 7.50, description: "Im yellow. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
   Item.create!(home_id: 1, main_photo_id: 12, category_id: 1, name: "leaf blower", price: 7.00, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
   Item.create!(home_id: 5, main_photo_id: 13, category_id: 1, name: "rake for leaves", description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
   Item.create!(home_id: 3, main_photo_id: 14, category_id: 1, name: "rakes and shovels", price: 3.00, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
   Item.create!(home_id: 1, main_photo_id: 15, category_id: 1, name: "old rake", price: 0.00, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
   Item.create!(home_id: 5, main_photo_id: 16, category_id: 1, name: "riding lawnmower", price: 15.00, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
-  Item.create!(home_id: 8, main_photo_id: 17, category_id: 1, name: "pole saw", price: 12.00, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
-  Item.create!(home_id: 3, main_photo_id: 18, category_id: 1, name: "saw on a pole", price: 5.00, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
-  Item.create!(home_id: 1, main_photo_id: 19, category_id: 1, name: "folding shovel", price: 5.00, description: "Its a small portable shovel. adipisicing elit. Numquam maxime possimus aperiam.")
-  Item.create!(home_id: 7, main_photo_id: 20, category_id: 1, name: "shovels", price: 2.00, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
+  Item.create!(home_id: 8, main_photo_id: 17, category_id: 1, name: "pole saw", price: 2.00, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
+  Item.create!(home_id: 3, main_photo_id: 18, category_id: 1, name: "saw on a pole", price: 1.50, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
+  Item.create!(home_id: 1, main_photo_id: 19, category_id: 1, name: "folding shovel", price: 2.00, description: "Its a small portable shovel. adipisicing elit. Numquam maxime possimus aperiam.")
+  Item.create!(home_id: 7, main_photo_id: 20, category_id: 1, name: "shovels", price: 3.00, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
   Item.create!(home_id: 2, main_photo_id: 21, category_id: 1, name: "shovels", price: 2.00, description: "My shovels are the cutest. Please dont get them dirty. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
-  Item.create!(home_id: 3, main_photo_id: 22, category_id: 1, name: "Shovels", price: 7.00, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
-  Item.create!(home_id: 1, main_photo_id: 23, category_id: 1, name: "wheelbarrow", price: 10.00, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
-  Item.create!(home_id: 2, main_photo_id: 24, category_id: 1, name: "wheelbarrow", price: 10.00, description: "Rickety old wheelbarrow. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
+  Item.create!(home_id: 3, main_photo_id: 22, category_id: 1, name: "Shovels", price: 3.50, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
+  Item.create!(home_id: 1, main_photo_id: 23, category_id: 1, name: "wheelbarrow", price: 4.00, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
+  Item.create!(home_id: 2, main_photo_id: 24, category_id: 1, name: "wheelbarrow", price: 4.00, description: "Rickety old wheelbarrow. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
   Item.create!(home_id: 6, main_photo_id: 25, category_id: 1, name: "wheelbarrow", price: 5.00, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam maxime possimus aperiam.")
 
   #default image
