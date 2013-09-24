@@ -6,11 +6,10 @@ class Item < ActiveRecord::Base
   belongs_to :home
   belongs_to :category
   has_one :owner, through: :home, source: :user
-  has_many :photos, class_name: "ItemPhoto", foreign_key: :item_id #, :dependent => :destroy
-  has_one :main_photo, class_name: "ItemPhoto", primary_key: :main_photo_id, foreign_key: :id #, :dependent => :destroy
+  has_many :photos, class_name: "ItemPhoto", foreign_key: :item_id, :dependent => :destroy
+  has_one :main_photo, class_name: "ItemPhoto", primary_key: :main_photo_id, foreign_key: :id, :dependent => :destroy
   has_many :rentals
   has_many :reviews, through: :rentals, source: :review
-  #accepts_nested_attributes_for :photos, :main_photo
 
   def average_rating
     item_id = id.to_i
@@ -26,11 +25,6 @@ class Item < ActiveRecord::Base
 
   def pending_requests
     self.rentals.pending.order("start_date ASC").all
-  end
-
-  def currently_rented?
-    # now = DateTime.now
-    # self.rentals.approved.any? { |rental| rental >}
   end
 
   def history

@@ -112,7 +112,7 @@ ActiveRecord::Base.transaction do
   Rental.create!(item_id: 4, start_date: "2013-09-01T13:25:16-07:00", end_date: "2013-09-30T13:25:16-07:00", status: "pending", user_id: 2)
 
   RentalReview.create(author_id: 2, title: "these are best!", body: "cool lawnmower bro", rating: 3.00, rental_id: 5 ) 
-  RentalReview.create(author_id: 1, title: "these are best 2!", body: "it does this thing like vroom vroom and crack clang and I don't know man, maybe it needs oil or something.", rating: 4.00, rental_id: 6 ) 
+  RentalReview.create(author_id: 1, title: "needs maintenance", body: "it does this thing like vroom vroom and crack clang and I don't know man, maybe it needs oil or something.", rating: 2.00, rental_id: 6 ) 
   RentalReview.create(author_id: 4, title: "these are best 3!", body: "yeah cool", rating: 5.00, rental_id: 7 ) 
   RentalReview.create(author_id: 5, title: "", body: "I like.", rating: 5.00, rental_id: 8 ) 
   RentalReview.create(author_id: 4, title: "meh", body: "Ok I guess.", rating: 1.00, rental_id: 9 ) 

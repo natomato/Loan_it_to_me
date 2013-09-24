@@ -22,4 +22,29 @@
       color: blue;
     }
   }
+
+  .tab-content {
+
+    .user-photo{
+      height: 4em;
+      width: 4em;
+    }
+
+    .reviewer {
+      text-align: center;
+    }
+
+    .title{
+      font-style: italic;
+    }
+
+    .rating {
+      display: inline-block;
+      float: right;
+    }
+
+    .body {
+      margin-top: 1em;
+    }
+  }
 }

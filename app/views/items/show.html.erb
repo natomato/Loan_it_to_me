@@ -10,7 +10,7 @@
       <p><%= @item.description %></p>
     </div>
     <div class="value span3">
-      <p><%= @item.price > 0 ? @item.price : "Free" %></p>
+      <p><%= @item.price > 0 ? number_to_currency( @item.price ) : "Free" %></p>
       <p><%= @item.avg_rating %></p>
     </div>
   </div>
@@ -25,12 +25,15 @@
     <div class="tab-content">
       <div class="tab-pane active" id="reviews">
         <% @item.reviews.each do |review| %>
-          <div class="review">
-            <p><%= review.author.username %> </p>
-            <p><%= review.title %> </p>
-            <p><%= review.body %> </p>
-            <div class="star">
-              <p><%= review.rating %> </p>
+          <div class="review row">
+            <div class="reviewer span1">
+              <div class="user-photo"></div>
+              <div class="name"><%= review.author.username %> </div>
+            </div>
+            <div class="review-content well span5">
+              <span class="title"><%= review.title %> </span>
+              <div class="rating" data-id='<%= review.rating.round %>'></div>
+              <p class="body"><%= review.body %> </p>
             </div>
           </div>
         <% end %>
@@ -48,10 +51,11 @@
       </div>
     </div> <!-- /.tab content -->
   </div> <!-- /.tabbable -->
-</div> <!-- /.container -->
+</div> <!-- /.item-detail -->
 
 <script type="text/javascript">
 $(document).ready(function() {
-  new LoanItToMe.Views.ItemDetailPage({ el: $('.item-detail') })
+  var itemDetail = new LoanItToMe.Views.ItemDetailPage({ el: $('.item-detail') });
+  itemDetail.render();
 });
 </script>
