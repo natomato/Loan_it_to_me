@@ -23,15 +23,16 @@ LoanItToMe.Views.HomeMarker = Backbone.View.extend({
     var view = new LoanItToMe.Views.ItemsList({ collection: this.collection });
 
     this.infoWindow = new google.maps.InfoWindow({
-      content: view.render().el
+      content: view.render().el,
+      maxHeight: 200,
     });
 
     var _this = this;
     //Event Listeners
-    google.maps.event.addListener(this.marker, 'click', function(){
-      _this.renderSidebar(view)
-      //_this.infoWindow.open(_this.map, _this.marker)
-    });
+    // google.maps.event.addListener(this.marker, 'click', function(){
+    //   //_this.renderSidebar(view)
+    //   _this.infoWindow.open(_this.map, _this.marker)
+    // });
   },
 
   render: function(){
