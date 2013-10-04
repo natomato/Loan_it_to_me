@@ -1,6 +1,4 @@
 LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
-  
-  //TODO: refactor this into a swapping router with separate views
 
   className: "index",
   template: JST['items/index'],
@@ -10,7 +8,6 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     "click button.photo" : "renderPhotos",
     "click button.map" : "renderMap",
     "click .item" : "renderDetail",
-    // "click #query": "search",
     "keyup .view-options": "search"
   },
 
@@ -18,9 +15,9 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     this.$map        = null;
     this.map         = null;
     this.category_id = options.category_id;
-    this.homes       = options.homesCollection || {};
-    this.items       = options.itemsCollection || {};
-    this.results     = options.resultsCollection || this.items;
+    this.homes       = options.homesCollection || {}; //all homes under this category
+    this.items       = options.itemsCollection || {}; //all items under this category
+    this.results     = options.resultsCollection || this.items; //search results - selects from items
     this.currentView = options.view ||
       new LoanItToMe.Views.ItemsList({ 
         collection: this.options.itemsCollection
@@ -51,7 +48,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
       center: SanFran,
       zoom: 12,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
-      //disableDefaultUI: true,
+      disableDefaultUI: true,
       //draggable: true,
       // styles: styles
     };
@@ -59,14 +56,13 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     //must pass the constructor a DOM element, not jQuery
     this.map = new google.maps.Map(this.$map[0], mapOptions);
     this.map.fitBounds(bounds);
-    //  
   },
 
   render: function() {
     this.renderLayout();
     this.renderViewOptions();    
     this.initializeMap();
-    this.swap(this.currentView); //Every view gets a copy of the collection. Better way?
+    this.swap(this.currentView); //Every view gets a copy of the collection
 
     return this;
   },
@@ -112,6 +108,8 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
       map: this.map
     });
 
+    // var sideBar = new LoanItToMe.Views.SideBar();
+    
     // LoanItToMe.mainRouter.navigate("categories/" + this.category_id + "/map/");
     this.swap(view);
 
@@ -137,7 +135,6 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   },
 
   search: _.debounce(function() {
-    // event.preventDefault();
     var results = this.items.search( $("#query").val() );
     this.results = new LoanItToMe.Collections.Items(results);
     this.currentView.collection = this.results

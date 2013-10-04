@@ -6,10 +6,8 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
     "categories/:id": "itemsIndex",
     "categories/:id/:view" : "itemsIndex",
     "homes/:id": "homeShow",
-    //"items/:id": "itemsDetail"
   },
 
-  //options 
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
     this.collection = options.collection;
@@ -24,44 +22,11 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
 
   homeShow: function(id) {
     console.log('mainRouter - homeShow');
-
-    // var _this = this;
-    //the homes_show page is bootstrapped with rental request data passed into router as JSON
     var home = new LoanItToMe.Models.Home(this.bootstrap, {parse: true} );
 
-    // var homeShow = new LoanItToMe.Views.HomeShow({ model: home });
     var itemRentals = new LoanItToMe.Views.ItemRentals({ collection: home.get('items') });
-    // home.fetch().done(function() {
-        
-    //     var homeShow = new LoanItToMe.Views.HomeShow({ collection: home.get('items') });
-        
-    //     var itemPhoto = new LoanItToMe.Models.ItemPhoto()
-    //     itemPhoto
-    //     //_this.$rootEl.html(homeShow.render().$el);
-    // })
+
     itemRentals.render();
-    // this.$rootEl.html(homeShow.render().$el);
-  },
-
-  itemsDetail: function(id) {
-    //!! Moved everything to a server side form for simplicity
-    
-    //var item  = new LoanItToMe.Models.Item({ id: id });
-    //var rental = new LoanItToMe.Models.Rental();
-    //var review = new LoanItToMe.Models.Review();
-    //var owner = new LoanItToMe.Models.User();
-    // var photo = new LoanItToMe.Models.Photo();
-
-    // item.fetch().done(function(data) {
-    //   console.log("fetched data");
-    //   var rentals = new LoanItToMe.Collections.Rentals({ model: rental });
-    //   //var reviews = new LoanItToMe.Collections.Reviews({ model: review });
-    //   //var owner   = new LoanItToMe.Model.User({ data.owner })
-    //   var detailView = new LoanItToMe.Views.ItemDetailPage({ model: item });
-    //   _this.$rootEl.html(detailView.render().$el);
-    // }).fail(function() {
-    //   console.log("itemDetail fetch failed");
-    // });
   },
 
   itemsIndex: function(id, view) {
@@ -69,12 +34,8 @@ LoanItToMe.Routers.Main = Support.SwappingRouter.extend({
     var items = new LoanItToMe.Collections.Items();
     var _this = this;
     if (view) {
-      //TODO: get rid of this stupid if/else statement
-      //cant pass in the correct view unless i initialize the view
-      //can't initialize without repopulating the collections
-      //indexView.render(); 
+      //launch the ItemsIndex at a particular view (photos, list, map)
     } else {
-      //TODO: use $.when to chain these deferreds
       items.fetch({data: {category_id: id}}).done(function() {
 
         console.log("fetched items") //a nested collection with homes

@@ -2,9 +2,9 @@ LoanItToMe.Views.HomesMap = Support.CompositeView.extend({
 
   // this identifies a div sibling of the parent
   // on swap, it becomes a child and from then on its added and removed as normal.  
-  //id: 'map-canvas',
-  //el: $map
-  //collection: Homes, each home has an items collection as a property
+  // id: 'map-canvas',
+  // el: $map
+  // collection: homes, each home has an items collection as a property
 
   initialize: function(options){
     this.map = options.map;
@@ -21,6 +21,8 @@ LoanItToMe.Views.HomesMap = Support.CompositeView.extend({
 
   render: function(){
     var _this = this;
+
+    
 
     // Backbone deferred pattern, the method will execute, but the collection is still empty
     // this.collection.deferred.done( function(){

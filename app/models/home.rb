@@ -12,7 +12,9 @@ class Home < ActiveRecord::Base
 
   # TODO: remove, instead using a category scope on item
   def items_by_category(cat_id)
+    # self.items.includes(:main_photo).where("category_id = ?", cat_id ).all
     self.items.where("category_id = ?", cat_id ).all
+    # self.items.join.item_photo
   end
 
   #return a home with array of items 

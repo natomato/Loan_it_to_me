@@ -1,10 +1,11 @@
 LoanItToMe.Views.HomeMarker = Backbone.View.extend({
   
+  template: JST['map_items'],
+
   events: {
     // 'mouseover a': 'showInfoWindow',
     // 'mouseout  a': 'hideInfoWindow',
   },
-  template: JST['map_items'],
 
   initialize: function(options){
     this.map = options.map;
@@ -25,8 +26,12 @@ LoanItToMe.Views.HomeMarker = Backbone.View.extend({
       content: view.render().el
     });
 
+    var _this = this;
     //Event Listeners
-    google.maps.event.addListener(this.marker, 'click', this.renderSidebar);
+    google.maps.event.addListener(this.marker, 'click', function(){
+      _this.renderSidebar(view)
+      //_this.infoWindow.open(_this.map, _this.marker)
+    });
   },
 
   render: function(){
@@ -43,11 +48,24 @@ LoanItToMe.Views.HomeMarker = Backbone.View.extend({
     // this.infoWindow.close();
   },
 
-  renderSidebar: function(home) {
+  renderSidebar: function(view) {
     console.log('clicked marker');
-        debugger 
-    this.$('map-canvas').append(JST['map_items']());
-   
+
+    var renderedContent = view.render().el;
+    var sideBar = document.createElement('div');
+    sideBar.id = 'mapSideBar'
+    sideBar.appendChild(renderedContent);
+
+    var map = document.getElementsByClassName('results');
+    document.body.appendChild(sideBar);
+    //var container = document.getElementsByClassName('results')
+    
+
+
+    // var content = document.createTextNode("hi thar");
+    // test.appendChild(content);
+    //document.body.insertBefore(view.render().el, container)
+
     // var renderedContent = this.template({ home: home });
     // home.items.each(function(item) {
     //   var itemView = new LoanItToMe.Views.ItemDetail({ model: item });

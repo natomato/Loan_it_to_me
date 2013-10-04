@@ -6,7 +6,7 @@ class HomesController < ApplicationController
   def index
     @cat_id = params[:category_id]
     @homes = Home.by_category(@cat_id)
-
+    
     respond_to do |format|
       # format.html
       format.json { render [:handlers] => :rabl }
