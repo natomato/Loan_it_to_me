@@ -9,7 +9,8 @@ LoanItToMe.Views.HomesMap = Support.CompositeView.extend({
   initialize: function(options){
     this.map = options.map;
     this.$el.removeClass('hide');
-    
+    this.$el.append(JST['map_items']()); //this enables me to create a floating div overmap of items at a marker
+    debugger
     //listenTo change on collection from search query and re-render
 
   },
@@ -33,7 +34,8 @@ LoanItToMe.Views.HomesMap = Support.CompositeView.extend({
       var homeMarker = new LoanItToMe.Views.HomeMarker({
         map: _this.map,
         model: home,
-        collection: home.get('items')
+        collection: home.get('items'),
+        el: _this.$('.map-sidebar')
       })
     });
     

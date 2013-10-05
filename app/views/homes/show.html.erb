@@ -7,7 +7,7 @@
         <div class="description span2">
           <div class="name"><%= item.name %></div>
           <div class="photo"><%= image_tag item.main_photo.photo.url(:small) %></div>
-          <div class="price"><%= item.price == 0 ? "Free" : "$" + item.price %></div>
+          <div class="price"><%= item.price == 0 ? "Free" : item.price %></div>
         </div>
         <!-- Backbone Rental Requests -->
         <ul class="request span8" id="<%= item.id %>"></ul>
@@ -21,7 +21,7 @@
         <div class="thumbnail well row span2">
           <div class="name"><%= item.name %></div>
           <div class="photo"><%= image_tag item.main_photo.photo.url(:small) %></div>
-          <div class="price"><%= item.price == 0 ? "Free" : "$" + item.price %></div>
+          <div class="price"><%= item.price == 0 ? "Free" : item.price %></div>
           <div class="category"><%= item.category.name %></div>
         </div>
       <% end %>

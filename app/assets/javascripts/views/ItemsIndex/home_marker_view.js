@@ -10,6 +10,7 @@ LoanItToMe.Views.HomeMarker = Backbone.View.extend({
   initialize: function(options){
     this.map = options.map;
     this.collection = options.collection;
+    this.el = options.el;
     // this.sidebar = options.sidebar
     
     console.log(this.model.get('longitude'));
@@ -29,16 +30,17 @@ LoanItToMe.Views.HomeMarker = Backbone.View.extend({
 
     var _this = this;
     //Event Listeners
-    // google.maps.event.addListener(this.marker, 'click', function(){
-    //   //_this.renderSidebar(view)
-    //   _this.infoWindow.open(_this.map, _this.marker)
-    // });
+    google.maps.event.addListener(this.marker, 'click', function(){
+      _this.renderSidebar(view)
+      //_this.infoWindow.open(_this.map, _this.marker)
+    });
   },
 
   render: function(){
     console.log('homeMarker render - wut?')
   },
 
+  //only for mobile
   showInfoWindow: function() {
     // //this.marker undefined, this.model undefined
     // this.infoWindow.open(this.map, this.marker);
@@ -51,28 +53,8 @@ LoanItToMe.Views.HomeMarker = Backbone.View.extend({
 
   renderSidebar: function(view) {
     console.log('clicked marker');
-
     var renderedContent = view.render().el;
-    var sideBar = document.createElement('div');
-    sideBar.id = 'mapSideBar'
-    sideBar.appendChild(renderedContent);
-
-    var map = document.getElementsByClassName('results');
-    document.body.appendChild(sideBar);
-    //var container = document.getElementsByClassName('results')
-    
-
-
-    // var content = document.createTextNode("hi thar");
-    // test.appendChild(content);
-    //document.body.insertBefore(view.render().el, container)
-
-    // var renderedContent = this.template({ home: home });
-    // home.items.each(function(item) {
-    //   var itemView = new LoanItToMe.Views.ItemDetail({ model: item });
-      
-    // })
-    // this.$el.append(renderedContent);
+    this.$el.html(renderedContent);
   }
 
 })

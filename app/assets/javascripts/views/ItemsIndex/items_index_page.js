@@ -34,23 +34,12 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     var ne = new google.maps.LatLng(37.830243,-122.292595)
     var sw = new google.maps.LatLng(37.692633,-122.495842)
     var bounds = new google.maps.LatLngBounds(sw, ne);
-    // var styles = [
-    //   {
-    //     elementType: "geometry",
-    //     stylers: [
-    //       { lightness: 33 },
-    //       { saturation: -90 }
-    //     ]
-    //   }
-    // ];
     
     var mapOptions = {
       center: SanFran,
       zoom: 12,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       disableDefaultUI: true,
-      //draggable: true,
-      // styles: styles
     };
 
     //must pass the constructor a DOM element, not jQuery
@@ -101,7 +90,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
     // view.render();
     // this.swap(view);
     ///////////////////
-    
+
     var view = new LoanItToMe.Views.HomesMap({ 
       collection: this.homes,
       el: this.$map,
