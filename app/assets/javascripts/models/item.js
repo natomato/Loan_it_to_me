@@ -16,6 +16,8 @@ LoanItToMe.Models.Item = Backbone.Model.extend({
       console.log('parsing item with a home model')
     }
 
+    params.rating = Math.round( params.rating );
+    
     return params
   },
 

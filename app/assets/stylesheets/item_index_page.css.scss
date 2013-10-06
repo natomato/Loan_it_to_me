@@ -23,6 +23,10 @@ $blue: #3D4AE8;
   // ★ ☆
 }
 
+.starred2 {
+  color: red;
+}
+
 //used to render google map offscreen
 .hide {
   position:relative;
@@ -54,6 +58,7 @@ $blue: #3D4AE8;
 
     .caption {
       height: 5em;
+      padding-top: 0.5em 0.5em 0 0.5em;
       position: relative;
     }
 
@@ -66,6 +71,11 @@ $blue: #3D4AE8;
       position: absolute;
       bottom: 1.5em;
       right: 1em;
+    }
+
+    .rating {
+      padding-top: 0.5em;
+      font-size: 1.2em;
     }
 
   }
@@ -87,8 +97,7 @@ $blue: #3D4AE8;
   }
 
   .caption {
-    height: 2em;
-    width: 15em;
+    width: 14.5em;
   }
 
  .name {

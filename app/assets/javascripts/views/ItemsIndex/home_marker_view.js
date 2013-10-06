@@ -55,7 +55,7 @@ LoanItToMe.Views.HomeMarker = Backbone.View.extend({
     var view = new LoanItToMe.Views.ItemsList({ collection: this.collection });
     var renderedContent = view.render().el;
     this.$el.empty()
-    debugger
+
     this.$el.html(renderedContent);
   }
 

@@ -1,14 +1,8 @@
 <div class="item-list">
   <hr>
-  <div class="price"><%= JST['items/_item_price']({item: item}) %></div>
+  <div class="price"><%= JST['items/_item_price']({ item: item }) %></div>
   <img src="<%= item.escape( 'photo_small') %>" alt="">
   <a href="/items/<%= item.id %>" class="name"><%= item.escape( 'name' ) %></a>
   <div class="description"><%= item.escape( 'description' ) %></div>
-  <div class="rating">
-    <span class="star" data-id="1">☆</span>
-    <span class="star" data-id="2">☆</span>
-    <span class="star" data-id="3">☆</span>
-    <span class="star" data-id="4">☆</span>
-    <span class="star" data-id="5">☆</span>
-  </div>
+  <div class="rating"></div>
 </div>

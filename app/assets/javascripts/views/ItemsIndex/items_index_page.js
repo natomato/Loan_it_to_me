@@ -138,8 +138,10 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
 
     if( newView.map ){
       this.$map.show();
+      this.$('#query').hide();
     } else {
       this.$map.hide();
+      this.$('#query').show();
     }
 
     this.renderChildInto(newView, this.$('.results'));
