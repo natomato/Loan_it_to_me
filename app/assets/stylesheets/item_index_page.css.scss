@@ -36,7 +36,7 @@ $blue: #3D4AE8;
 .results {
   
   .thumbnail {
-    height: 18em;
+    height: 15em;
     width: 15em;
     display: inline-block;
     margin-bottom: 1em;
@@ -48,20 +48,24 @@ $blue: #3D4AE8;
     .photo {
       margin-top: 0.5em;
       text-align: center;
-      height: 12em;
+      height: 10em;
       width: 15em;
     }
 
     .caption {
       height: 5em;
+      position: relative;
     }
 
     .name {
       color: $blue;
     }
 
-    .rating {
-      display: inline-block;
+    .price {
+      font-size: 1.5em;
+      position: absolute;
+      bottom: 1.5em;
+      right: 1em;
     }
 
   }
@@ -153,8 +157,8 @@ $blue: #3D4AE8;
   // display:none;
   position:absolute;
   overflow: auto;
-  top: 8em;
-  right: 4em;
+  top: 1em;
+  right: 1em;
   height: 35em;
   width: 20em;
   z-index: 1;

@@ -61,7 +61,7 @@ ActiveRecord::Base.transaction do
   ItemPhoto.create(item_id: 9, photo: File.open("#{Rails.root}/app/assets/images/hedge-trimmer2.jpeg"))
   ItemPhoto.create(item_id: 10, photo: File.open("#{Rails.root}/app/assets/images/lawnmower black.jpeg"))
   ItemPhoto.create(item_id: 11, photo: File.open("#{Rails.root}/app/assets/images/lawnmower-yellow.jpeg"))
-  ItemPhoto.create(item_id: 12, photo: File.open("#{Rails.root}/app/assets/images/leaf-blower.jpeg"))
+  ItemPhoto.create(item_id: 12, photo: File.open("#{Rails.root}/app/assets/images/default-thumbnail-image.jpg"))
   ItemPhoto.create(item_id: 13, photo: File.open("#{Rails.root}/app/assets/images/rake-blue.jpeg"))
   ItemPhoto.create(item_id: 14, photo: File.open("#{Rails.root}/app/assets/images/rake-shovel.jpeg"))
   ItemPhoto.create(item_id: 15, photo: File.open("#{Rails.root}/app/assets/images/rake.jpeg"))

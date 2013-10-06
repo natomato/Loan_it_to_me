@@ -1,7 +1,5 @@
-<div class="price">
-  <% if( +item.get('price') > 0 ) { %>
-    <%= accounting.formatMoney(item.get('price')) %>
-  <% } else { %>
-    <%= 'Free' %>
-  <% }; %>
-</div>
+<% if( +item.get('price') > 0 ) { %>
+  <%= accounting.formatMoney(item.get('price')) %>
+<% } else { %>
+  <%= 'Free' %>
+<% }; %>

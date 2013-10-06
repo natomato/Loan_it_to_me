@@ -21,17 +21,16 @@ LoanItToMe.Views.HomeMarker = Backbone.View.extend({
       //animation: google.maps.Animation.DROP,
     });
 
-    var view = new LoanItToMe.Views.ItemsList({ collection: this.collection });
-
-    this.infoWindow = new google.maps.InfoWindow({
-      content: view.render().el,
-      maxHeight: 200,
-    });
+    // WARNING: view must be defined
+    // this.infoWindow = new google.maps.InfoWindow({
+    //   content: view.render().el,
+    //   maxHeight: 200,
+    // });
 
     var _this = this;
     //Event Listeners
     google.maps.event.addListener(this.marker, 'click', function(){
-      _this.renderSidebar(view)
+      _this.renderSidebar()
       //_this.infoWindow.open(_this.map, _this.marker)
     });
   },
@@ -53,7 +52,10 @@ LoanItToMe.Views.HomeMarker = Backbone.View.extend({
 
   renderSidebar: function(view) {
     console.log('clicked marker');
+    var view = new LoanItToMe.Views.ItemsList({ collection: this.collection });
     var renderedContent = view.render().el;
+    this.$el.empty()
+    debugger
     this.$el.html(renderedContent);
   }
 
