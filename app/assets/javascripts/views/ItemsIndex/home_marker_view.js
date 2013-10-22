@@ -31,7 +31,6 @@ LoanItToMe.Views.HomeMarker = Backbone.View.extend({
     //Event Listeners
     google.maps.event.addListener(this.marker, 'click', function(){
       _this.renderSidebar()
-      //_this.infoWindow.open(_this.map, _this.marker)
     });
   },
 

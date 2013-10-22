@@ -35,7 +35,7 @@ LoanItToMe.Views.Rental = Support.CompositeView.extend({
   render: function() {
     dateFormat.masks.rentalTime = "dddd mmm dd";
 
-    renderedContent = this.template({ 
+    var renderedContent = this.template({ 
       rental: this.model,
       user: this.model.get('user')
     });

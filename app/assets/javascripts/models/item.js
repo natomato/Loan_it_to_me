@@ -26,6 +26,7 @@ LoanItToMe.Models.Item = Backbone.Model.extend({
     var json = _.clone(this.attributes);
     delete json.home;
     //delete json.rental;
+    delete json.rating;
     return json;
   }
 })
