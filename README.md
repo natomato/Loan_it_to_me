@@ -16,6 +16,5 @@ A simple app to rent tools from neighbors. The site interface was inspired by ai
 + Ruby on Rails
 + Backbone.js
 + Google Maps Javascript API v3
-+ jQuery
 + Amazon Web Services
 
