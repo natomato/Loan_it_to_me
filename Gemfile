@@ -17,6 +17,7 @@ group :development do
   gem "quiet_assets"
   gem "webrick"
   gem "rspec-rails", '~> 2.0'
+  gem "jasmine"
 end
 
 # FOR GOOGLE GEOCODING API
