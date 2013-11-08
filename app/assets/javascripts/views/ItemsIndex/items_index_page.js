@@ -57,9 +57,6 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   },
 
   renderDetail: function() {
-    //Now this is handled by Rails
-    //var id = $(event.currentTarget).data("id");
-    //Backbone.history.navigate("/items/" + id, {trigger: true} ); 
   },
 
   renderLayout: function() {
@@ -68,38 +65,18 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   },
 
   renderList: function() {
-
     var view = new LoanItToMe.Views.ItemsList({ collection: this.results });
-    // LoanItToMe.mainRouter.navigate("categories/" + this.category_id + "/list/");
     this.swap(view);
 
   },
 
   renderMap: function() {
-   
-    // Backbone's deferred pattern - fails to load homes into collection
-    // var home  = new LoanItToMe.Models.Home();
-    // var homes = new LoanItToMe.Collections.Homes();
-    //
-    // var view = new LoanItToMe.Views.ItemsMap({
-    //   collection: homes,
-    //   el: _this.$map,
-    //   map: _this.map
-    // });
-    //
-    // view.render();
-    // this.swap(view);
-    ///////////////////
-
     var view = new LoanItToMe.Views.HomesMap({ 
       collection: this.homes,
       el: this.$map,
       map: this.map
     });
 
-    // var sideBar = new LoanItToMe.Views.SideBar();
-    
-    // LoanItToMe.mainRouter.navigate("categories/" + this.category_id + "/map/");
     this.swap(view);
 
     //To prevent missing tiles, call resize on the map after rendering into main view
@@ -109,9 +86,7 @@ LoanItToMe.Views.ItemsIndex = Support.CompositeView.extend({
   renderPhotos: function() {
     var view = new LoanItToMe.Views.ItemsPhotos({ collection: this.results })
     
-    // LoanItToMe.mainRouter.navigate("categories/" + this.category_id + "/photos/");
     this.swap(view);
-    // return new LoanItToMe.Views.ItemsPhotos({ collection: this.items })
   },
 
   renderViewOptions: function() {

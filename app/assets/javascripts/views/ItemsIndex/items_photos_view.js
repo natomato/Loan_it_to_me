@@ -10,6 +10,6 @@ LoanItToMe.Views.ItemsPhotos = Support.CompositeView.extend ({
       _this.$el.append(itemPhoto.render().$el);
     });
 
-    return this; //renderChildInto will work without an explicit return here.
+    return this;
   }
 })

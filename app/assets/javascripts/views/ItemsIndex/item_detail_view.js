@@ -9,20 +9,15 @@ LoanItToMe.Views.ItemDetail = Support.CompositeView.extend({
     "mouseout  .item" : "highlight"
   },
 
-  //TODO move rating to a sub template
   initialize: function() {
     this.$el.attr("data-id", this.model.get("id"))
   },
 
   highlight: function(event) {
-    
-    console.log('highlight! or notHighlight!')
-
     $(event.currentTarget).toggleClass("highlight");
   },
 
   render: function() {
-
     var renderedContent = this.template({ item: this.model });
     this.$el.html(renderedContent);
 

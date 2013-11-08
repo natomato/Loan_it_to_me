@@ -4,8 +4,6 @@ require 'json'
 
 module HomesHelper
 
-  #TODO: move these methods into the model, if it doesn't brake the geocode route
-
   def get_lat_lng(location)
     url = Addressable::URI.new(
       :scheme => "https",
@@ -18,7 +16,6 @@ module HomesHelper
     top_result = response["results"].first
     top_result["geometry"]["location"].values_at("lat", "lng")
 
-    #TODO: add error handling if address not found
   end
 
   def get_address(lat, lng)
@@ -36,6 +33,5 @@ module HomesHelper
     results = response["results"].first
     results["formatted_address"]
 
-    #TODO: add error handling if address not found
   end
 end

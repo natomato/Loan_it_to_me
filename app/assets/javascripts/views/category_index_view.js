@@ -1,7 +1,5 @@
 LoanItToMe.Views.CategoryIndex = Backbone.View.extend({
 
-  //el: ".container",
-
   events: {
     "mouseover .category-item": "highlight",
     "mouseout  .category-item": "unhighlight"
@@ -14,10 +12,6 @@ LoanItToMe.Views.CategoryIndex = Backbone.View.extend({
   unhighlight: function(event) {
     $(event.currentTarget).removeClass('highlight');
   },
-
-  render: function(){
-    //TODO delete
-  }
 
 
 });

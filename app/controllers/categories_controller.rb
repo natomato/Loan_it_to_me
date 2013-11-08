@@ -7,7 +7,6 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    # TODO: make admin panel for this route
     @category = Category.new(params[:category])
     @category.save!
 
@@ -29,9 +28,6 @@ class CategoriesController < ApplicationController
   def show
     @items = Item.includes(:home).where("category_id = ?", params[:id]).all
 
-    # render :index
-    
-    # render :json => "index.json.rabl"    
     respond_to do |format|
       format.html
       format.json { render(:file => '../views/items/index.json.rabl') }

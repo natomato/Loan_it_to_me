@@ -18,7 +18,6 @@ LoanItToMe.Views.ItemDetailPage = Support.CompositeView.extend({
     var _this = this;
 
     $('.rating').each(function(){
-      //this == each div  
       var rating = new LoanItToMe.Views.Rating({
         el: this,
         rating: $(this).data("id") 

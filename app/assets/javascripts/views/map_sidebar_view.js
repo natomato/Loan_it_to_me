@@ -1,4 +1,3 @@
-//TODO: remove, not used
 LoanItToMe.Views.MapSideBar = Backbone.View.extend({
   
   template: JST['map_items'],

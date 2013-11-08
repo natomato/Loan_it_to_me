@@ -11,14 +11,8 @@ LoanItToMe.Views.Rental = Support.CompositeView.extend({
     var id = $(event.currentTarget).data('id');
     var _this = this;
 
-
-    console.log(this.model.id + ' clicked accept')
     this.model.url = "/items/" + this.model.get('item_id') + "/rentals/" + this.model.id
 
-    //TODO: change to accepted
-    // this.model.set('status', 'bogus');
-
-    //GOOD: model.save PUTS to /items/:id/rentals/:id
     this.model.save({status: 'approved'}, {
       success: function( responseData ){
         console.log('success: ' + responseData);

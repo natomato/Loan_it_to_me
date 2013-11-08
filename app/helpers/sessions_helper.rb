@@ -13,7 +13,6 @@ module SessionsHelper
     !!@current_user
   end
 
-  #TODO: remove print
   def require_login
     p ['require login', current_user]
     unless logged_in?

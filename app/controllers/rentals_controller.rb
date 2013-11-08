@@ -26,15 +26,11 @@ class RentalsController < ApplicationController
 
     if params[:status] == "approved"
       @rental.approve!
-      p ['rental ------------>', @rental]
       render :json => @rental
     elsif params[:status] == "undo"
       @rental.undo_approve!
       render :json => @rental
     else
-      #flash error message
-      p ['rental ------------>', @rental]
-      p ['rental errors------>', @rental.errors]
       render :json => @rental.errors, :status => :unprocessable_entity
     end
   end

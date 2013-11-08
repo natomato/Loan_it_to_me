@@ -10,9 +10,6 @@ LoanItToMe.Views.HomesMap = Support.CompositeView.extend({
     this.map = options.map;
     this.$el.removeClass('hide');
     this.$el.append(JST['map_items']()); //this enables me to create a floating div overmap of items at a marker
-
-    //listenTo change on collection from search query and re-render
-
   },
 
   events: {
@@ -22,11 +19,6 @@ LoanItToMe.Views.HomesMap = Support.CompositeView.extend({
 
   render: function(){
     var _this = this;
-
-    // Backbone deferred pattern, the method will execute, but the collection is still empty
-    // this.collection.deferred.done( function(){
-    //   console.log('maps data returned from server');
-    // });
 
     this.collection.each(function(home){
       var homeMarker = new LoanItToMe.Views.HomeMarker({

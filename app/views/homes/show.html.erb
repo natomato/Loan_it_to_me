@@ -57,7 +57,6 @@
 <script id="bootstrapped-rentals">
 $(document).ready(function() {
     var homeData = <%= j @home_items_requests.to_json.html_safe %>;
-    //var home = new LoanItToMe.Models.Home(homeData, {parse: true} );
     var options = { 
       $rootEl: $('.requests'),
       bootstrap: homeData,

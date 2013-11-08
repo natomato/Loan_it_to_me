@@ -2,8 +2,6 @@ class ItemsController < ApplicationController
   def index
     @items = Item.where(category_id: params[:category_id]).all
 
-    #render(:file => '../views/items/index.json.rabl')
-    # render :json => "index.json.rabl"    
     respond_to do |format|
       format.html
       format.json { render [:handlers] => :rabl }
@@ -11,7 +9,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    #TODO fill out transaction
     ActiveRecord::Base.transaction do
       if params[:photo].nil?
         params[:item][:main_photo_id] = 1
@@ -49,8 +46,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item_photo = [ItemPhoto.new(item_id: @item.id)]
 
-
-    # not using the json
     respond_to do |format|
       format.html
       format.json { render [:handlers] => :rabl }

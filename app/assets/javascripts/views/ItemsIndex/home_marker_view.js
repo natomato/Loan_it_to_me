@@ -2,30 +2,17 @@ LoanItToMe.Views.HomeMarker = Backbone.View.extend({
   
   template: JST['map_items'],
 
-  events: {
-    // 'mouseover a': 'showInfoWindow',
-    // 'mouseout  a': 'hideInfoWindow',
-  },
-
   initialize: function(options){
     this.map = options.map;
     this.collection = options.collection;
     this.el = options.el;
-    // this.sidebar = options.sidebar
     
     console.log(this.model.get('longitude'));
 
     this.marker = new google.maps.Marker({
       map: this.map,
       position: new google.maps.LatLng(this.model.get('latitude'), this.model.get('longitude')),
-      //animation: google.maps.Animation.DROP,
     });
-
-    // WARNING: view must be defined
-    // this.infoWindow = new google.maps.InfoWindow({
-    //   content: view.render().el,
-    //   maxHeight: 200,
-    // });
 
     var _this = this;
     //Event Listeners
@@ -36,17 +23,6 @@ LoanItToMe.Views.HomeMarker = Backbone.View.extend({
 
   render: function(){
     console.log('homeMarker render - wut?')
-  },
-
-  //only for mobile
-  showInfoWindow: function() {
-    // //this.marker undefined, this.model undefined
-    // this.infoWindow.open(this.map, this.marker);
-    // this.infoWindow.setPosition(this.model.get('latitude'), this.model.get('longitude'));
-  },
-
-  hideInfoWindow: function() {
-    // this.infoWindow.close();
   },
 
   renderSidebar: function(view) {

@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :bio, :home_id, :password_hash, :selfie, :session_token, :username, :email, :password
   attr_reader :password
 
-  include BCrypt #TODO test if I can remove this
+  include BCrypt
   before_validation { self.reset_session_token! if self.session_token.nil? }
   validate :password_hash, :session_token, :username, presence: true
   validate :password, :length => { minimum: 4 }
@@ -35,7 +35,6 @@ class User < ActiveRecord::Base
     self.rentals.past.approved.order("end_date DESC").all
   end
 
-  #TODO is this necessary?
   def password
     @password || self.password_hash
   end

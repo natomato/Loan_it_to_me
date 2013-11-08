@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    # @user.reset_session_token!
 
     if @user && @user.save
       login!(@user)
