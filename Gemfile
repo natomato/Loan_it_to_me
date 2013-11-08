@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-# some newer edit
+
 gem 'rails', '3.2.14'
 
 group :assets do
