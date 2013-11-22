@@ -1,0 +1,23 @@
+.user-profile {
+
+    .photo {
+      display: inline-block;
+      float: left;
+      margin: 2em;
+    }
+    
+    .bio {
+      padding-top: 3em;
+    }
+
+    .username {
+      font-size: 1.3em;
+    }
+
+    .email {
+      padding-top: 2em;
+      font-size: 3em;
+      float: right;
+      color: blue;
+    }
+}

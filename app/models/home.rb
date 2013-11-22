@@ -31,7 +31,6 @@ class Home < ActiveRecord::Base
         }
       }
     })
-
   end
 
   def all_rentals

@@ -31,5 +31,4 @@ class Item < ActiveRecord::Base
     self.rentals.past.approved.order("end_date DESC").all
   end
 
-
 end
