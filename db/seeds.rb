@@ -2,7 +2,7 @@ ActiveRecord::Base.transaction do
   
   User.create!(username: "Sam Sample", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", selfie: "//test/pic/loc.png", session_token: "testtoken", bio: "im a test", home_id: 8)
   User.create!(username: "Mr. Borrower", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "moochtoken", bio: "i like borrow things", home_id: 7)
-  User.create!(username: "Demo Dan", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "givertoken", selfie: File.open("#{Rails.root}/app/assets/images/default-user-image.png"), bio: "Hi Neighbor! I have collected quite a few tools over the years. I don't mind loaning them to ya, so long as you take good care of them.", home_id: 1)
+  User.create!(username: "Demo Dan", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "givertoken", selfie: "#{Rails.root}/app/assets/images/default-user-image.png", bio: "Hi Neighbor! I have collected quite a few tools over the years. I don't mind loaning them to ya, so long as you take good care of them.", home_id: 1)
   User.create!(username: "Mandi setz", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "guesttoken", bio: "", home_id: 2)
   User.create!(username: "Oddy Asmani", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "guesttoken", bio: "", home_id: 3)
   User.create!(username: "Kehuda Yatz", password_hash: "$2a$10$OrGpIS0j/IMmpHzitqyYmOVcVECIAUwguH3kVbj9FmMMxIumWqyfW", session_token: "guesttoken", bio: "", home_id: 4)

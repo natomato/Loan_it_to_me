@@ -1,6 +1,0 @@
-parent renders itself when the subview saves model change
-
-Object #<Object> has no method '_configure' 
-you must instantiate the view for the constructor to be run,
-GOOD: var rentalsIndex = new LoanItToMe.Views.Rentals({..})
-BAD : var rentalsIndex = LoanItToMe.Views.Rentals({..})

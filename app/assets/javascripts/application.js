@@ -13,6 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//
+//  Tool Tips provided by opentip
+//= require opentip
+//= require adapter-jquery
+//
+//
 //= require underscore
 //= require backbone
 //= require dateFormat
