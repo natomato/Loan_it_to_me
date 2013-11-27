@@ -5,7 +5,11 @@
 <div class="main-content">
   <% @categories.each do |category| %>
   <div class="category-item span4 offset4 text-center" data-category="<%= category.id %>">
-    <li class="well well-large"><%= link_to category.name, category_url(category) %></li>
+    <% if category.name == "Lawn and Garden" %>
+      <li class="well well-large animated pulse"><%= link_to category.name, category_url(category) %></li>
+    <% else %>
+      <li class="well well-large"><%= link_to category.name, category_url(category) %></li>
+    <% end %>
   </div>
   <% end %>
 </div>
