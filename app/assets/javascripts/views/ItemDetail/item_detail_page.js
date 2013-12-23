@@ -1,7 +1,5 @@
 LoanItToMe.Views.ItemDetailPage = Support.CompositeView.extend({
 
-  events: {
-  },
 
   initialize: function(){
     console.log("im alive!")
